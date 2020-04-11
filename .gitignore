@@ -1,3 +1,4 @@
 .idea/
 framework/
 logs/
+.nginx_config
