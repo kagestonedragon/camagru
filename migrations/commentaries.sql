@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS `commentaries` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `text` VARCHAR(140) NOT NULL
+);

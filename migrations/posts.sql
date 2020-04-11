@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS `posts` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `image` VARCHAR(140) NOT NULL,
+    `description` VARCHAR(140),
+    `likes` INT DEFAULT 0,
+    `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,1 @@
+<?$APPLICATION->loadController('Registration')?>
