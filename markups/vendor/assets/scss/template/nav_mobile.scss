@@ -1,0 +1,40 @@
+.nav {
+  &-mobile {
+    display: none;
+    height: $header-height;
+
+    @media (max-width: $mobile) {
+      display: block;
+    }
+
+    &__item {
+      color: $menu-color;
+      font-size: $menu-font-size;
+      line-height: $header-height;
+    }
+
+    &__menu {
+      &-opened {
+        display: block;
+
+        a {
+          display: block;
+          height: $header-height;
+          line-height: $header-height;
+          text-align: center;
+          background-color: $header-background-color;
+          font-family: $menu-font-family;
+          font-size: $menu-font-size;
+          color: $menu-color;
+        }
+
+        @media (min-width: $mobile) {
+          display: none;
+        }
+      }
+      &-closed {
+        display: none;
+      }
+    }
+  }
+}

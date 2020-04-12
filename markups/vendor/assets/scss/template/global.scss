@@ -1,0 +1,15 @@
+// FONT AWESOME
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css');
+// FONTS
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed&display=swap');
+$satisfy-font: 'Satisfy', cursive;
+$ubuntu-font: 'Ubuntu Condensed', sans-serif;
+$roboto-font: 'Roboto', sans-serif;
+
+$mobile: 450px;
+
+a {
+  text-decoration: none;
+}

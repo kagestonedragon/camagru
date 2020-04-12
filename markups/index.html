@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/vendor/dist/0.css">
+    <title>Camagru</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="nav__item-logo">
+                <a href="/">Camagru</a>
+            </div>
+            <div class="nav__item-menu">
+                <a href="/auth/">Войти</a>
+                <span class="nav__item-delimiter">|</span>
+                <a href="/registration/">Зарегистрироваться</a>
+            </div>
+            <div class="nav-mobile">
+                <i class="fas fa-bars nav-mobile__item" id="js-menu-open"></i>
+                <i class="fas fa-times nav-mobile__item" id="js-menu-close" style="display: none;"></i>
+            </div>
+        </nav>
+        <div class="nav-mobile__menu-closed" id="js-menu-fields">
+            <a href="/auth/" class="">Войти</a>
+            <a href="/registration/">Зарегистрироваться</a>
+        </div>
+    </header>
+<script>
+    const topMenuOpenButton = document.getElementById('js-menu-open');
+    const topMenuCloseButton = document.getElementById('js-menu-close');
+    const topMenuFields = document.getElementById('js-menu-fields');
+
+    topMenuOpenButton.addEventListener('click', function(e) {
+        topMenuFields.classList.remove('nav-mobile__menu-closed');
+        topMenuFields.classList.add('nav-mobile__menu-opened');
+        topMenuOpenButton.style.display = 'none';
+        topMenuCloseButton.style.display = 'block';
+    });
+
+    topMenuCloseButton.addEventListener('click', function(e) {
+        topMenuFields.classList.remove('nav-mobile__menu-opened');
+        topMenuFields.classList.add('nav-mobile__menu-closed');
+        topMenuOpenButton.style.display = 'block';
+        topMenuCloseButton.style.display = 'none';
+    });
+</script>
+</body>
+</html>

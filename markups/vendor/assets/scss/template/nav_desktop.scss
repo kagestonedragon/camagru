@@ -1,0 +1,72 @@
+$nav-top-width: 90%;
+
+$logo-color: #1b97c4;
+$logo-color-hover: #56caf5;
+$logo-font-family: $satisfy-font;
+$logo-font-size: 1.5rem;
+$logo-font-weight: 600;
+
+$menu-color: #c4c4c4;
+$menu-color-hover: #dedede;
+$menu-font-family: $ubuntu-font;
+$menu-font-size: 1.1rem;
+
+$delimiter-color: #919191;
+
+.nav {
+  width: 90%;
+  line-height: $header-height;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    &-logo {
+      -moz-user-select: none;
+      user-select: none;
+
+      font-family: $logo-font-family;
+      font-size: $logo-font-size;
+      font-weight: $logo-font-weight;
+
+      a {
+        color: $logo-color;
+
+        &:hover {
+          color: $logo-color-hover;
+          transition: color 0.1s linear;
+        }
+      }
+    }
+
+    &-menu {
+      display: block;
+
+      -moz-user-select: none;
+      user-select: none;
+
+      font-family: $menu-font-family;
+      font-size: $menu-font-size;
+
+      a {
+        color: $menu-color;
+
+        &:hover {
+          color: $menu-color-hover;
+          transition: color 0.1s linear;
+        }
+      }
+
+      @media (max-width: $mobile) {
+        display: none;
+      }
+    }
+
+    &-delimiter {
+      color: #919191;
+    }
+  }
+}

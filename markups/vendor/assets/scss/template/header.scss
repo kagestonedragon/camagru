@@ -1,0 +1,10 @@
+$header-height: 50px;
+$header-background-color: #1a1a1a;
+$header-opacity: 90%;
+
+header {
+  height: $header-height;
+
+  background-color: $header-background-color;
+  opacity: $header-opacity;
+}
