@@ -2,6 +2,8 @@
 
 namespace Framework\Modules;
 
+use PHPMailer;
+
 class Mail
 {
     public static function send(string $to, string $subject, string $message, array $headers = [])
@@ -26,7 +28,7 @@ class Mail
 // The following is self explanatory
         $mail->Subject = 'Email sent with Mailgun';
         $mail->Body    = '<span style="color: red">Mailgun rocks</span>, thank you <em>phpmailer</em> for making emailing easy using this <b>tool!</b>';
-        $mail->AltBody = 'Mailgun rocks, shame you can't see the html sent with phpmailer so you're seeing this instead';
+        $mail->AltBody = 'Mailgun rocks, shame you cant see the html sent with phpmailer so youre seeing this instead';
         if(!$mail->send()) {
             echo "Message hasn't been sent.";
             echo 'Mailer Error: ' . $mail->ErrorInfo . "n";
