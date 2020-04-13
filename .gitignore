@@ -2,3 +2,5 @@
 logs/
 .nginx_config
 markups/vendor/node_modules/
+composer
+vendor/
