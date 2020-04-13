@@ -21,6 +21,7 @@ require_once('include/config/router.php');
 /**
  * Автолоадер
  */
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
 require_once('include/autoloader.php');
 
 /**
