@@ -2,5 +2,35 @@ $posts-margin: 15px;
 
 .posts {
   height: auto;
+  width: auto;
   margin: $posts-margin;
+
+  &__item {
+    &-new {
+      position: fixed;
+      z-index: 2;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      background-color: white;
+      box-shadow: $item-box-shadow;
+
+      i {
+        margin-left: 11px;
+        margin-top: 9px;
+        font-size: 2rem;
+        color: grey;
+        cursor: pointer;
+
+        &:hover {
+          color: #20f558;
+          transition: color 0.1s linear;
+        }
+      }
+    }
+  }
 }

@@ -10,10 +10,20 @@ $comment-delete-color-hover: #ff4f55;
     font-family: $roboto-font;
 
     &__item {
+      font-size: 0.95rem;
       margin-top: 5px;
+      &-wrapper {
+        display: flex;
+        justify-content: space-between;
+      }
 
       &-author {
         color: $comment-author-color;
+
+        &:after {
+          content: ':';
+          color: $posts-desc-color;
+        }
 
         &:hover {
           color: $comment-author-color-hover;
@@ -24,6 +34,8 @@ $comment-delete-color-hover: #ff4f55;
       &-text {
         color: $posts-desc-color;
         word-wrap: break-word;
+        margin-right: auto;
+        margin-left: 3px;
       }
 
       &-delete {
@@ -38,6 +50,7 @@ $comment-delete-color-hover: #ff4f55;
   }
 
   &__delimiter {
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid #fafafa;
+    width: 97%;
   }
 }

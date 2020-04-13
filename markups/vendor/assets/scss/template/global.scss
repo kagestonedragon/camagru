@@ -4,9 +4,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap');
 $satisfy-font: 'Satisfy', cursive;
 $ubuntu-font: 'Ubuntu Condensed', sans-serif;
 $roboto-font: 'Roboto', sans-serif;
+$inria-font: 'Inria Sans', sans-serif;
 
 $mobile: 450px;
 
@@ -18,4 +20,5 @@ a {
 
 body {
   background-color: $body-background-color;
+  position: relative;
 }

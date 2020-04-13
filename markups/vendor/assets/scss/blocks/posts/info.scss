@@ -1,6 +1,6 @@
 $posts-info-margin-top: 10px;
 
-$posts-info-author-font-size: 1.2rem;
+$posts-info-author-font-size: 1.1rem;
 $posts-info-author-color: #006ea1;
 $posts-info-author-color-hover: #42c3ff;
 $posts-info-author-delimiter-color: #dbdbdb;
@@ -18,7 +18,7 @@ $posts-info-likes-unlike-color: #787878;
     margin-top: $posts-info-margin-top;
 
     &-author {
-      font-family: $ubuntu-font;
+      font-family: $inria-font;
       font-size: $posts-info-author-font-size;
 
       &__name {
@@ -41,7 +41,7 @@ $posts-info-likes-unlike-color: #787878;
 
     &-likes {
       &__amount {
-        font-family: $ubuntu-font;
+        font-family: $inria-font;
         font-size: $posts-info-author-font-size;
         color: $posts-info-author-date-color;
 

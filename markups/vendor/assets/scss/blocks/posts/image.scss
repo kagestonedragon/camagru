@@ -3,23 +3,28 @@ $image-max-width: $content-width - ($posts-margin * 2);
 .posts {
   &__image {
     position: relative;
+    display: block;
     z-index: 1;
 
     width: 100%;
     margin: 0 auto;
 
+    background-color: #fafafa;
+    border-radius: 5px;
     // css-трюк для растяжки изображения по размеру родительского блока
-    &:before {
+    &:after {
       content: "";
       display: block;
+
+      padding-top: 100%;
     }
 
     img {
+      position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
-
       max-width: $image-max-width;
     }
   }

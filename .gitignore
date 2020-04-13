@@ -1,5 +1,4 @@
 .idea/
-framework/
 logs/
 .nginx_config
 markups/vendor/node_modules/

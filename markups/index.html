@@ -60,29 +60,32 @@
                 </div>
                 <hr class="posts__delimiter">
                 <div class="posts__comments">
-                    <div class="posts__comments__item">
-                        <a class="posts__comments__item-author" href="#">
+                    <div class="posts__comments__item" style="border: 1px solid;">
+                        <a class="posts__comments__item-author" href="#" style="display: inline-block;">
                             @root
                         </a>
                         <span class="posts-comments__item-delimiter">:</span>
-                        <span>twetwegfdgdgdfgdfgdghdft</span>
-                        <a href="#" class="posts-comments__item-delete">
-                            <i class="fas fa-times"></i>
-                        </a>
+                        <div style="display: inline-block">
+
+                        </div>
+
                     </div>
                     <div class="posts__comments__item">
-                        <a class="posts__comments__item-author" href="#">
-                            @root
-                        </a>
-                        <span class="posts-comments__item-delimiter">:</span>
-                        <span class="posts-comments__item-text" style="word-wrap: break-word;">twetwegfdgdgsdgsgdfgsdgsdgsggdhdft</span>
+                        <div class="posts__comments__item-wrapper">
+                            <a class="posts__comments__item-author" href="#">@root</a>
+                            <div class="posts__comments__item-text">twetweggrewhre her herh er hfdgdgsdgsgdf h tru sgsdggdhdft</div>
+                            <a href="#" class="posts__comments__item-delete">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="posts__comments-new">
                     <form>
-                        <input class="posts__comments-new__text" type="text" name="text" value="" placeholder="Оставьте комментарий">
+                        <!--<input class="posts__comments-new__text" type="text" name="text" value="" placeholder="Оставьте комментарий">-->
+                        <textarea class="posts__comments-new__text" name="commentary" placeholder="Оставить комментарий"></textarea>
                         <div class="posts__comments-new__submit">
-                            <i class="fas fa-paper-plane"></i>
+                            <i class="fas fa-arrow-alt-circle-right"></i>
                         </div>
                         <input type="submit" name="submit" value="" style="display: none;">
                     </form>
@@ -96,6 +99,9 @@
             <a href="https://github.com/kagestonedragon/" target="_blank"><img src="/images/github.png"></a>
         </div>
     </footer>
+    <div class="test">
+        <a href="/items/add/"><i class="fas fa-plus"></i></a>
+    </div>
 <script src="/js/event_listeners.js"></script>
 </body>
 </html>

@@ -4,6 +4,9 @@
             <a href="https://github.com/kagestonedragon/" target="_blank"><img src="/markups/images/github.png"></a>
         </div>
     </footer>
+    <div class="posts__item-new">
+        <a href="/items/add/"><i class="fas fa-plus"></i></a>
+    </div>
     <script src="/markups/js/event_listeners.js"></script>
     <script>
         const updateLikesEvents = function(){
