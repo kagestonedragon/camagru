@@ -1,0 +1,36 @@
+$item-background-color: white;
+$item-box-shadow: 0 0 15px #dbdbdb;
+
+$content-width: 500px;
+
+$tablet: 530px;
+
+main {
+  min-height: calc(100vh - 130px); // для поджимки футера к низу страницы
+
+  width: auto;
+  height: auto;
+
+  margin: 65px auto 15px;
+  //border: 1px solid blue;
+
+  @media (min-width: $tablet) {
+    width: $tablet;
+  }
+}
+
+.content {
+  width: auto;
+  height: auto;
+
+  margin: 15px;
+
+  background-color: $item-background-color;
+  border: 1px solid white;
+  border-radius: 3px;
+  box-shadow: $item-box-shadow;
+
+  @media (min-width: $tablet) {
+    width: $content-width;
+  }
+}

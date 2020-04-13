@@ -1,0 +1,73 @@
+$posts-info-margin-top: 10px;
+
+$posts-info-author-font-size: 1.2rem;
+$posts-info-author-color: #006ea1;
+$posts-info-author-color-hover: #42c3ff;
+$posts-info-author-delimiter-color: #dbdbdb;
+$posts-info-author-date-color: #4a4a4a;
+
+$posts-info-likes-like-color: #ff4f55;
+$posts-info-likes-unlike-color: #787878;
+
+.posts {
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: $posts-info-margin-top;
+
+    &-author {
+      font-family: $ubuntu-font;
+      font-size: $posts-info-author-font-size;
+
+      &__name {
+        color: $posts-info-author-color;
+
+        &:hover {
+          color: $posts-info-author-color-hover;
+          transition: color 0.1s linear;
+        }
+      }
+
+      &__delimiter {
+        color: $posts-info-author-delimiter-color;
+      }
+
+      &__date {
+        color: $posts-info-author-date-color;
+      }
+    }
+
+    &-likes {
+      &__amount {
+        font-family: $ubuntu-font;
+        font-size: $posts-info-author-font-size;
+        color: $posts-info-author-date-color;
+
+        margin-right: 5px;
+      }
+
+      &__like {
+        color: $posts-info-likes-unlike-color;
+        font-size: $posts-info-author-font-size;
+        cursor: pointer;
+
+        &:hover {
+          color: $posts-info-likes-like-color;
+          transition: color 0.2s linear;
+        }
+      }
+
+      &__unlike {
+        color:  $posts-info-likes-like-color;
+        font-size: $posts-info-author-font-size;
+
+        &:hover {
+          color: $posts-info-likes-unlike-color;
+          transition: color 0.2s linear;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+$github-logo-size: $header-height - ($header-height * 0.2);
+
+footer {
+  height: $header-height;
+
+  background-color: $header-background-color;
+  opacity: $header-opacity;
+}
+
+.nav-footer {
+  -moz-user-select: none;
+  user-select: none;
+
+  width: $github-logo-size;
+  margin: 0 auto;
+  a {
+    img {
+      height: $github-logo-size;
+      margin-top: $header-height * 0.1;
+      width: auto;
+      filter: invert(0.9);
+
+      &:hover {
+        filter: invert(1);
+        transition: filter 0.2s linear;
+      }
+    }
+  }
+}

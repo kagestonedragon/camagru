@@ -1,0 +1,43 @@
+$comment-margin-top: 5px;
+$comment-author-color: #006ea1;
+$comment-author-color-hover: #42c3ff;
+
+$comment-delete-color: #787878;
+$comment-delete-color-hover: #ff4f55;
+
+.posts {
+  &__comments {
+    font-family: $roboto-font;
+
+    &__item {
+      margin-top: 5px;
+
+      &-author {
+        color: $comment-author-color;
+
+        &:hover {
+          color: $comment-author-color-hover;
+          transition: color 0.1s linear;
+        }
+      }
+
+      &-text {
+        color: $posts-desc-color;
+        word-wrap: break-word;
+      }
+
+      &-delete {
+        color: $comment-delete-color;
+
+        &:hover {
+          color: $comment-delete-color-hover;
+          transition: color 0.2s linear;
+        }
+      }
+    }
+  }
+
+  &__delimiter {
+    border-top: 1px solid #f0f0f0;
+  }
+}

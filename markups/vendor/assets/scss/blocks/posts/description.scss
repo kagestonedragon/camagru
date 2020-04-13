@@ -1,0 +1,11 @@
+$posts-desc-margin-top: 5px;
+$posts-desc-color: #242424;
+
+.posts {
+  &__description {
+    margin-top: $posts-desc-margin-top;
+    font-family: $roboto-font;
+    font-size: 1rem;
+    color: $posts-desc-color;
+  }
+}

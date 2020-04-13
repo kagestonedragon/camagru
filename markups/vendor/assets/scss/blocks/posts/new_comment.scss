@@ -1,0 +1,41 @@
+.posts {
+  &__comments {
+    &-new {
+      margin-top: 5px;
+
+      form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &__text {
+        font-family: $roboto-font;
+        font-size: 0.9rem;
+        width: 100%;
+        margin-right: 10px;
+        outline: none;
+        border: 1px solid #e6e6e6;
+        border-radius: 2px;
+        padding: 0 5px;
+        height: 25px;
+
+        &:hover {
+          border: 1px solid grey;
+          transition: border 0.2s linear;
+        }
+      }
+
+      &__submit {
+        cursor: pointer;
+        font-size: 1.4rem;
+        color: grey;
+
+        &:hover {
+          color: #05ffb4;
+          transition: color 0.15s linear;
+        }
+      }
+    }
+  }
+}

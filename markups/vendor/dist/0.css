@@ -5,7 +5,14 @@
 a {
   text-decoration: none; }
 
+body {
+  background-color: #f5f5f5; }
+
 header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
   height: 50px;
   background-color: #1a1a1a;
   opacity: 90%; }
@@ -71,4 +78,153 @@ header {
         display: none; } }
   .nav-mobile__menu-closed {
     display: none; }
+
+footer {
+  height: 50px;
+  background-color: #1a1a1a;
+  opacity: 90%; }
+
+.nav-footer {
+  -moz-user-select: none;
+  user-select: none;
+  width: 40px;
+  margin: 0 auto; }
+  .nav-footer a img {
+    height: 40px;
+    margin-top: 5px;
+    width: auto;
+    filter: invert(0.9); }
+    .nav-footer a img:hover {
+      filter: invert(1);
+      transition: filter 0.2s linear; }
+
+main {
+  min-height: calc(100vh - 130px);
+  width: auto;
+  height: auto;
+  margin: 65px auto 15px; }
+  @media (min-width: 530px) {
+    main {
+      width: 530px; } }
+
+.content {
+  width: auto;
+  height: auto;
+  margin: 15px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 3px;
+  box-shadow: 0 0 15px #dbdbdb; }
+  @media (min-width: 530px) {
+    .content {
+      width: 500px; } }
+
+.posts {
+  height: auto;
+  margin: 15px; }
+
+.posts__image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto; }
+  .posts__image:before {
+    content: "";
+    display: block; }
+  .posts__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    max-width: 470px; }
+
+.posts__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; }
+  .posts__info-author {
+    font-family: "Ubuntu Condensed", sans-serif;
+    font-size: 1.2rem; }
+    .posts__info-author__name {
+      color: #006ea1; }
+      .posts__info-author__name:hover {
+        color: #42c3ff;
+        transition: color 0.1s linear; }
+    .posts__info-author__delimiter {
+      color: #dbdbdb; }
+    .posts__info-author__date {
+      color: #4a4a4a; }
+  .posts__info-likes__amount {
+    font-family: "Ubuntu Condensed", sans-serif;
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-right: 5px; }
+  .posts__info-likes__like {
+    color: #787878;
+    font-size: 1.2rem;
+    cursor: pointer; }
+    .posts__info-likes__like:hover {
+      color: #ff4f55;
+      transition: color 0.2s linear; }
+  .posts__info-likes__unlike {
+    color: #ff4f55;
+    font-size: 1.2rem; }
+    .posts__info-likes__unlike:hover {
+      color: #787878;
+      transition: color 0.2s linear; }
+
+.posts__description {
+  margin-top: 5px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: #242424; }
+
+.posts__comments {
+  font-family: "Roboto", sans-serif; }
+  .posts__comments__item {
+    margin-top: 5px; }
+    .posts__comments__item-author {
+      color: #006ea1; }
+      .posts__comments__item-author:hover {
+        color: #42c3ff;
+        transition: color 0.1s linear; }
+    .posts__comments__item-text {
+      color: #242424;
+      word-wrap: break-word; }
+    .posts__comments__item-delete {
+      color: #787878; }
+      .posts__comments__item-delete:hover {
+        color: #ff4f55;
+        transition: color 0.2s linear; }
+
+.posts__delimiter {
+  border-top: 1px solid #f0f0f0; }
+
+.posts__comments-new {
+  margin-top: 5px; }
+  .posts__comments-new form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .posts__comments-new__text {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-right: 10px;
+    outline: none;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    padding: 0 5px;
+    height: 25px; }
+    .posts__comments-new__text:hover {
+      border: 1px solid grey;
+      transition: border 0.2s linear; }
+  .posts__comments-new__submit {
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: grey; }
+    .posts__comments-new__submit:hover {
+      color: #05ffb4;
+      transition: color 0.15s linear; }
 

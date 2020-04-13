@@ -1,4 +1,16 @@
+// TEMPLATE
 @import 'template/global.scss';
 @import 'template/header.scss';
 @import 'template/nav_desktop.scss';
 @import 'template/nav_mobile.scss';
+@import 'template/footer.scss';
+@import 'template/content.scss';
+
+// BLOCKS
+@import 'blocks/posts/posts.scss';
+@import 'blocks/posts/image.scss';
+@import 'blocks/posts/info.scss';
+@import 'blocks/posts/description.scss';
+@import 'blocks/posts/comments.scss';
+@import 'blocks/posts/new_comment.scss';
+@import 'blocks/posts.scss';

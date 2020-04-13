@@ -1,0 +1,26 @@
+$image-max-width: $content-width - ($posts-margin * 2);
+
+.posts {
+  &__image {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    margin: 0 auto;
+
+    // css-трюк для растяжки изображения по размеру родительского блока
+    &:before {
+      content: "";
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+      max-width: $image-max-width;
+    }
+  }
+}

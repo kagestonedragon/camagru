@@ -1,9 +1,3 @@
-<html>
-<head>
-    <title>POPA</title>
-</head>
-<body>
-    <?$APPLICATION->loadView('Auth.links')?>
-    <?$APPLICATION->loadController('Posts')?>
-</body>
-</html>
+<?require_once(SITE_TEMPLATE_HEADER)?>
+<?$APPLICATION->loadController('Posts')?>
+<?require_once(SITE_TEMPLATE_FOOTER)?>

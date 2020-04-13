@@ -3,6 +3,10 @@ $header-background-color: #1a1a1a;
 $header-opacity: 90%;
 
 header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
   height: $header-height;
 
   background-color: $header-background-color;

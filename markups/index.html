@@ -27,24 +27,75 @@
             <a href="/registration/">Зарегистрироваться</a>
         </div>
     </header>
-<script>
-    const topMenuOpenButton = document.getElementById('js-menu-open');
-    const topMenuCloseButton = document.getElementById('js-menu-close');
-    const topMenuFields = document.getElementById('js-menu-fields');
+    <main>
+        <article class="content">
+            <div class="posts">
+                <div class="posts__image">
+                    <img src="images/photo.jpg">
+                </div>
+                <div class="posts__info">
+                    <div class="posts__info-author">
+                        <a class="posts__info-author__name" href="#">
+                            @author
+                        </a>
+                        <span class="posts__info-author__delimiter">|</span>
+                        <span class="posts__info-author__date">
+                            25.04.2020
+                        </span>
+                    </div>
+                    <div class="posts__info-likes">
+                        <span class="posts__info-likes__amount">
+                            50
+                        </span>
+                        <a href="#" class="posts__info-likes__like">
+                            <i class="fas fa-heart"></i>
+                        </a>
+                        <!--<a href="#" class="posts__info-likes__unlike">
+                            <i class="fas fa-heart"></i>
+                        </a>-->
+                    </div>
+                </div>
+                <div class="posts__description">
+                    The box-shadow CSS property adds shadow effects around an element's frame. You can set multiple effects separated by commas. A box shadow is described by X and Y offsets relative to the element, blur and spread radius, and color.
+                </div>
+                <hr class="posts__delimiter">
+                <div class="posts__comments">
+                    <div class="posts__comments__item">
+                        <a class="posts__comments__item-author" href="#">
+                            @root
+                        </a>
+                        <span class="posts-comments__item-delimiter">:</span>
+                        <span>twetwegfdgdgdfgdfgdghdft</span>
+                        <a href="#" class="posts-comments__item-delete">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <div class="posts__comments__item">
+                        <a class="posts__comments__item-author" href="#">
+                            @root
+                        </a>
+                        <span class="posts-comments__item-delimiter">:</span>
+                        <span class="posts-comments__item-text" style="word-wrap: break-word;">twetwegfdgdgsdgsgdfgsdgsdgsggdhdft</span>
+                    </div>
+                </div>
+                <div class="posts__comments-new">
+                    <form>
+                        <input class="posts__comments-new__text" type="text" name="text" value="" placeholder="Оставьте комментарий">
+                        <div class="posts__comments-new__submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <input type="submit" name="submit" value="" style="display: none;">
+                    </form>
+                </div>
+            </div>
+        </article>
+    </main>
 
-    topMenuOpenButton.addEventListener('click', function(e) {
-        topMenuFields.classList.remove('nav-mobile__menu-closed');
-        topMenuFields.classList.add('nav-mobile__menu-opened');
-        topMenuOpenButton.style.display = 'none';
-        topMenuCloseButton.style.display = 'block';
-    });
-
-    topMenuCloseButton.addEventListener('click', function(e) {
-        topMenuFields.classList.remove('nav-mobile__menu-opened');
-        topMenuFields.classList.add('nav-mobile__menu-closed');
-        topMenuOpenButton.style.display = 'block';
-        topMenuCloseButton.style.display = 'none';
-    });
-</script>
+    <footer>
+        <div class="nav-footer">
+            <a href="https://github.com/kagestonedragon/" target="_blank"><img src="/images/github.png"></a>
+        </div>
+    </footer>
+<script src="/js/event_listeners.js"></script>
 </body>
 </html>
