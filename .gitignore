@@ -1,6 +1,7 @@
 .idea/
-logs/
-.nginx_config
+framework/upload/
+framework/logs/
 markups/vendor/node_modules/
 composer
+composer.lock
 vendor/
