@@ -67,7 +67,10 @@ class GetList extends Model
             ->order(
                 '#posts.date',
                 'DESC'
-            )->execute([
+            )
+            /*->limit(2)
+            ->offset(1)*/
+            ->execute([
                     '#posts' => $this->params['TABLE'],
                     '#users' => $this->params['TABLE_USERS'],
                     '#connection' => $this->params['TABLE_CONNECTION'],

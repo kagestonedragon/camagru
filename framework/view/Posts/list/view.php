@@ -92,3 +92,6 @@ $username = $USER->getUsername();
         </article>
     <?endforeach;?>
 <?endif;?>
+<!--<article class="content">
+    Загрузить еще
+</article>-->

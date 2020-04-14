@@ -9,7 +9,7 @@ use Framework\Modules\Mail;
 
 class Register extends Model
 {
-    const VERIFICATION_LINK = SITE_DOMAIN . '/registration/#TOKEN#/';
+    const VERIFICATION_LINK = '/registration/#TOKEN#/';
     const STATUS = [
         'NOT_VALID_DATA' => 4200,
         'ALREADY_EXISTS' => 4201,
@@ -88,12 +88,12 @@ class Register extends Model
 
     private function sendVerificationLink(string $email, string $token)
     {
-        $verificationLink = 'http://' . str_replace('#TOKEN#', $token, Register::VERIFICATION_LINK);
+        $verificationLink = 'https://' . env('SITE_DOMAIN') . str_replace('#TOKEN#', $token, Register::VERIFICATION_LINK);
 
         Mail::send(
             $email,
-            'Registration verification | Camagru',
-            '<a href="' . $verificationLink . '">Подтвердить</a>'
+            'Завершение регистрации | Camagru',
+            '<p>Вы успешно зарегистрировались на сайте. Для завершения перейти по ссылке <a href="' . $verificationLink . '">подтвеждения</a>.'
         );
     }
 }

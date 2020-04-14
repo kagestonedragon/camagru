@@ -88,6 +88,24 @@ class ORM
         return ($this);
     }
 
+    public function limit($limit)
+    {
+        $this->query .= 'LIMIT ';
+        $this->query .= $limit;
+        $this->query .= ' ';
+
+        return ($this);
+    }
+
+    public function offset($offset)
+    {
+        $this->query .= 'OFFSET ';
+        $this->query .= $offset;
+        $this->query .= ' ';
+
+        return ($this);
+    }
+
     public function and(string $condition)
     {
         $this->query .= 'AND ' . $condition;
