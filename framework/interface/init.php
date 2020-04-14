@@ -6,8 +6,16 @@
 session_start();
 
 /**
+ * Автолоадер
+ */
+require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
+require_once('include/autoloader.php');
+
+
+/**
  * Константы
  */
+require_once('include/constants/dotenv.php');
 require_once('include/constants/framework.php');
 require_once('include/constants/site.php');
 
@@ -17,12 +25,6 @@ require_once('include/constants/site.php');
 require_once('include/config/database.php');
 require_once('include/config/tables.php');
 require_once('include/config/router.php');
-
-/**
- * Автолоадер
- */
-require_once($_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php');
-require_once('include/autoloader.php');
 
 /**
  * Создание объектов модулей

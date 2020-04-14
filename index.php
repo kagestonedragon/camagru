@@ -1,4 +1,3 @@
 <?require_once(SITE_TEMPLATE_HEADER)?>
-<?$APPLICATION->loadController('Registration')?>
+<?$APPLICATION->loadController('Posts')?>
 <?require_once(SITE_TEMPLATE_FOOTER)?>
-

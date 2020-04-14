@@ -2,6 +2,13 @@
 $routerConfig = [
     // POSTS
     [
+        'PATTERN' => '/^(\/)$/',
+        'LOCATION' => '/site/items/index.php',
+        'PARAMS' => [
+            'ACTION' => 'SHOW_LIST',
+        ],
+    ],
+    [
         'PATTERN' => '/^(\/items\/)$/',
         'LOCATION' => '/site/items/index.php',
         'PARAMS' => [

@@ -46,6 +46,7 @@ class Application
 
     public function Redirect(string $url)
     {
-        header('Location: ' . $url);
+        $a = 'http://kagestonedragon.tech';
+        echo '<script type="text/javascript">window.location.href = "' . $a . $url . '"</script>';
     }
 }
