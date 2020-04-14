@@ -331,16 +331,18 @@ main {
         border: 1px solid grey; }
     .form__item-submit {
       display: block;
-      min-width: 150px;
-      height: 25px;
+      min-width: 200px;
+      height: 35px;
       margin: 0 auto;
       margin-top: 50px;
       background-color: white;
       outline: none;
       border: 1px solid #e6e6e6;
       border-radius: 2px;
-      cursor: pointer; }
+      cursor: pointer;
+      color: grey; }
       .form__item-submit:hover {
         background-color: #e6e6e6;
+        color: black;
         transition: background-color 0.1s linear; }
 
