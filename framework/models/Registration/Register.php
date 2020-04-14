@@ -93,7 +93,7 @@ class Register extends Model
         Mail::send(
             $email,
             'Registration verification | Camagru',
-            '<a href="' . $verificationLink . '">Подтвержить</a>'
+            '<a href="' . $verificationLink . '">Подтвердить</a>'
         );
     }
 }
