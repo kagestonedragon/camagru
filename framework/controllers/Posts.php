@@ -2,6 +2,8 @@
 
 namespace Framework\Controllers;
 
+use Framework\Modules\Debugger;
+
 class Posts extends Controller
 {
     const SHOW_LIST = [
