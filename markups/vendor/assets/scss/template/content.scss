@@ -6,8 +6,8 @@ $content-width: 500px;
 $tablet: 530px;
 
 main {
+  position: relative;
   min-height: calc(100vh - 130px); // для поджимки футера к низу страницы
-  display: flex;
 
   width: auto;
   height: auto;
@@ -36,6 +36,15 @@ main {
   }
 
   &__form {
-    margin:auto;
+    margin: auto;
+    position: absolute;
+    width: 94%; // костыль для позиционирования
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 }
