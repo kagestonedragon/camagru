@@ -121,6 +121,5 @@
                 newImage.src = reader.result;
             };
         });
-
     })()
 </script>

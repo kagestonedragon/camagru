@@ -11,14 +11,19 @@ use Framework\Models\Auth\Authorize;
         <p>Аккаунт не подтвержден!</p>
     <?endif;?>
 <?endif;?>
-<form method="post">
-    <label>
-        username: <input type="text" name="username" value="">
-    </label>
-    <br>
-    <label>
-        password: <input type="password" name="password" value="">
-    </label>
-    <br>
-    <input type="submit" name="submit" value="Отправить">
-</form>
+<article class="content">
+    <div class="form">
+        <h2 class="form__title">Авторизация</h2>
+        <form class="form__main" method="post">
+            <label class="form__item">
+                <div class="form__item-desc">Логин</div>
+                <input class="form__item-text" type="text" name="username" value="">
+            </label>
+            <label class="form__item">
+                <div class="form__item-desc">Пароль</div>
+                <input class="form__item-text" type="password" name="password" value="">
+            </label>
+            <input class="form__item-submit" type="submit" value="Войти">
+        </form>
+    </div>
+</article>
