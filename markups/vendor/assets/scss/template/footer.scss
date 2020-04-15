@@ -2,6 +2,7 @@ $github-logo-size: $header-height - ($header-height * 0.2);
 
 footer {
   height: $header-height;
+  width: auto;
 
   background-color: $header-background-color;
   opacity: $header-opacity;

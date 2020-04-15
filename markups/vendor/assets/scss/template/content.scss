@@ -7,6 +7,7 @@ $tablet: 530px;
 
 main {
   min-height: calc(100vh - 130px); // для поджимки футера к низу страницы
+  display: flex;
 
   width: auto;
   height: auto;
@@ -32,5 +33,9 @@ main {
 
   @media (min-width: $tablet) {
     width: $content-width;
+  }
+
+  &__form {
+    margin:auto;
   }
 }

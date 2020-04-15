@@ -83,6 +83,7 @@ header {
 
 footer {
   height: 50px;
+  width: auto;
   background-color: #1a1a1a;
   opacity: 90%; }
 
@@ -102,6 +103,7 @@ footer {
 
 main {
   min-height: calc(100vh - 130px);
+  display: flex;
   width: auto;
   height: auto;
   margin: 65px auto 15px; }
@@ -120,6 +122,8 @@ main {
   @media (min-width: 530px) {
     .content {
       width: 500px; } }
+  .content__form {
+    margin: auto; }
 
 .posts {
   height: auto;
@@ -217,6 +221,9 @@ main {
     .posts__comments__item-wrapper {
       display: flex;
       justify-content: space-between; }
+      .posts__comments__item-wrapper__left {
+        width: 100%;
+        margin-right: 10px; }
     .posts__comments__item-author {
       color: #006ea1; }
       .posts__comments__item-author:after {
@@ -226,12 +233,15 @@ main {
         color: #42c3ff;
         transition: color 0.1s linear; }
     .posts__comments__item-text {
+      display: inline;
       color: #242424;
       word-wrap: break-word;
-      margin-right: auto;
-      margin-left: 3px; }
+      margin-right: auto; }
     .posts__comments__item-delete {
-      color: #787878; }
+      color: #787878;
+      width: 25px;
+      text-align: center;
+      margin: auto; }
       .posts__comments__item-delete:hover {
         color: #ff4f55;
         transition: color 0.2s linear; }
