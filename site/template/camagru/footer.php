@@ -1,7 +1,7 @@
     </main>
     <footer>
         <div class="nav-footer">
-            <a href="https://github.com/kagestonedragon/" target="_blank"><img src="/markups/images/github.png"></a>
+            <a href="https://github.com/kagestonedragon/camagru/" target="_blank"><img src="/markups/images/github.png"></a>
         </div>
     </footer>
     <div class="posts__item-new">
