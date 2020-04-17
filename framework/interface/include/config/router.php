@@ -95,6 +95,13 @@ $routerConfig = [
         ],
     ],
     [
+        'PATTERN' => '/^(\/ajax\/auth\/)$/',
+        'LOCATION' => '/site/ajax/index.php',
+        'PARAMS' => [
+            'ACTION' => 'FORM_AUTH',
+        ],
+    ],
+    [
         'PATTERN' => '/^(\/logout\/)$/',
         'LOCATION' => '/site/auth/index.php',
         'PARAMS' => [

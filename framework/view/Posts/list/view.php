@@ -11,8 +11,10 @@ $username = $USER->getUsername();
     <!-- COMMENT TEMPLATE -->
     <div class="posts__comments__item js-comment-template" style="display: none;">
         <div class="posts__comments__item-wrapper">
-            <a class="posts__comments__item-author" href="#">@<?=$username?></a>
-            <div class="posts__comments__item-text"></div>
+            <div class="posts__comments__item-wrapper__left">
+                <a class="posts__comments__item-author" href="#">@<?=$username?></a>
+                <div class="posts__comments__item-text"></div>
+            </div>
             <a href="#" class="posts__comments__item-delete js-comment-delete">
                 <i class="fas fa-times"></i>
             </a>
@@ -67,8 +69,10 @@ $username = $USER->getUsername();
                         <?foreach ($result['COMMENTARIES'][$itemValue['id']] as $commentary) :?>
                             <div class="posts__comments__item js-comment">
                                 <div class="posts__comments__item-wrapper">
-                                    <a class="posts__comments__item-author" href="#">@<?=$commentary['username']?></a>
-                                    <div class="posts__comments__item-text"><?=$commentary['commentary']?></div>
+                                    <div class="posts__comments__item-wrapper__left">
+                                        <a class="posts__comments__item-author" href="#">@<?=$commentary['username']?></a>
+                                        <div class="posts__comments__item-text"><?=$commentary['commentary']?></div>
+                                    </div>
                                     <?if ($userId == $commentary['user_id']) :?>
                                         <a href="/items/<?=$itemValue['id']?>/commentary/<?=$commentary['id']?>/delete/" class="posts__comments__item-delete js-comment-delete">
                                             <i class="fas fa-times"></i>

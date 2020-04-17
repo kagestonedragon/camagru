@@ -1,4 +1,4 @@
-<article class="content">
+<article class="content content__form">
     <div class="form">
         <h2 class="form__title">Регистрация</h2>
         <form class="form__main" method="post">

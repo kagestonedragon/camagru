@@ -19,6 +19,9 @@ class Ajax extends Controller
     const GET_ITEMS = [
         'MODEL' => 'Posts::GetList',
     ];
+    const FORM_AUTH = [
+        'MODEL' => 'Auth::Authorize',
+    ];
 
     protected function process()
     {
@@ -29,7 +32,22 @@ class Ajax extends Controller
             $this->addCommentary(Ajax::ADD_COMMENTARY['MODEL']);
         } else if ($action == 'GET_ITEMS') {
             $this->getItems(Ajax::GET_ITEMS['MODEL']);
+        } else if ($action == 'FORM_AUTH') {
+            $this->auth(Ajax::FORM_AUTH['MODEL']);
         }
+    }
+
+    private function auth(string $model)
+    {
+        global $APPLICATION;
+        global $dbTables;
+
+        $params = [
+            'TABLE' => $dbTables['USERS'],
+        ];
+        $result = $APPLICATION->loadModel($model, $params);
+
+        echo json_encode($result);
     }
 
     private function addCommentary(string $model)

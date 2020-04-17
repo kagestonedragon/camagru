@@ -18,22 +18,50 @@ use Framework\Modules\ORM;
 class Authorize extends Model
 {
     const STATUS = [
-        'NOT_VALID_DATA' => 5200,
-        'NOT_VERIFIED' => 5201,
-        'SUCCESS' => 5202,
+        'ERROR_FIELDS' => [
+            'CODE' => '500',
+            'TEXT' => 'Не верно заполненые поля!',
+        ],
+        'ERROR_USER' => [
+            'CODE' => '501',
+            'TEXT' => 'Такого пользователя не существует!',
+        ],
+        'ERROR_VERIFIED' => [
+            'CODE' => '502',
+            'TEXT' => 'Требуется подтвеждение аккаунта. Проверьте почтовый адресQ',
+        ],
+        'SUCCESS' => [
+            'CODE' => '200',
+            'TEXT' => 'Успешно ',
+        ],
     ];
 
     protected function Process()
     {
         global $REQUEST;
 
-        $user = $this->validate($REQUEST->arPost['username'], $REQUEST->arPost['password']);
-        if (is_array($user)) {
-            $this->authorize($user['id'], $user['username']);
-            $this->setStatus(Authorize::STATUS['SUCCESS']);
+        $username = $REQUEST->arPost['username'];
+        $password = $REQUEST->arPost['password'];
+        if ($this->validateData($username, $password)) {
+            if ($user = $this->validateUser($username, $password)) {
+                $this->authorize($user['id'], $user['username']);
+                $this->result['status'] = Authorize::STATUS['SUCCESS'];
+            }
         } else {
-            $this->setStatus($user);
+            $this->result['status'] = Authorize::STATUS['ERROR_FIELDS'];
         }
+
+    }
+
+    private function validateData($username, $password)
+    {
+        if (empty($username) || $username == '') {
+            return (false);
+        } else if (empty($password) || $password == '') {
+            return (false);
+        }
+
+        return (true);
     }
 
     /**
@@ -54,7 +82,7 @@ class Authorize extends Model
      * @param string $password
      * @return array|mixed|string
      */
-    private function validate(string $username, string $password)
+    private function validateUser(string $username, string $password)
     {
         $user = (new ORM('#users'))
             ->select([
@@ -73,9 +101,11 @@ class Authorize extends Model
             );
 
         if (empty($user)) {
-            return (Authorize::STATUS['NOT_VALID_DATA']);
+            $this->result['status'] = Authorize::STATUS['ERROR_USER'];
+            return (false);
         } else if ($user['verified'] == '0') {
-            return (Authorize::STATUS['NOT_VERIFIED']);
+            $this->result['status'] = Authorize::STATUS['ERROR_VERIFIED'];
+            return (false);
         } else {
             return ($user);
         }
