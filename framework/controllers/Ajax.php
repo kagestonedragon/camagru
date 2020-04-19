@@ -22,6 +22,9 @@ class Ajax extends Controller
     const FORM_AUTH = [
         'MODEL' => 'Auth::Authorize',
     ];
+    const FORM_REGISTRATION = [
+        'MODEL' => 'Registration::Register',
+    ];
 
     protected function process()
     {
@@ -34,7 +37,22 @@ class Ajax extends Controller
             $this->getItems(Ajax::GET_ITEMS['MODEL']);
         } else if ($action == 'FORM_AUTH') {
             $this->auth(Ajax::FORM_AUTH['MODEL']);
+        } else if ($action == 'FORM_REGISTRATION') {
+            $this->registration(Ajax::FORM_REGISTRATION['MODEL']);
         }
+    }
+
+    private function registration(string $model)
+    {
+        global $APPLICATION;
+        global $dbTables;
+
+        $params = [
+            'TABLE' => $dbTables['USERS'],
+        ];
+        $result = $APPLICATION->loadModel($model, $params);
+
+        echo json_encode($result);
     }
 
     private function auth(string $model)

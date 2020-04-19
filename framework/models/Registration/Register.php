@@ -4,12 +4,14 @@ namespace Framework\Models\Registration;
 
 use Framework\Helpers\Registration as RegistrationHelper;
 use Framework\Models\Basic\Model;
+use Framework\Modules\Debugger;
 use Framework\Modules\ORM;
 use Framework\Modules\Mail;
 
 class Register extends Model
 {
     const VERIFICATION_LINK = '/registration/#TOKEN#/';
+
     const STATUS = [
         'ERROR_FIELDS' => [
             'CODE' => '500',
@@ -25,28 +27,52 @@ class Register extends Model
         ],
         'SUCCESS' => [
             'CODE' => '200',
-            'TEXT' => 'Успешно!',
+            'TEXT' => 'На почту #EMAIL# отправлена ссылка для подтвеждения аккаунта!',
         ],
     ];
 
     private string $token = '';
 
+    private function validateData($data)
+    {
+        if (empty($data) ||
+            empty($data['username']) ||
+            empty($data['password']) ||
+            empty($data['password-confirm']) ||
+            empty($data['email'])
+        ) {
+            $this->result['STATUS'] = Register::STATUS['ERROR_FIELDS'];
+            return (false);
+        }
+
+        return (true);
+    }
+
+    private function validatePasswords(string $password, string $password_confirm) {
+        if ($password !== $password_confirm) {
+            $this->result['STATUS'] = Register::STATUS['ERROR_PASSWORD'];
+            return (false);
+        }
+
+        return (true);
+    }
+
     protected function Process()
     {
         global $REQUEST;
 
-        if ($this->isUserNotExists($REQUEST->arPost['username'], $REQUEST->arPost['email'])) {
-            $this->addUser(
-                $REQUEST->arPost['username'],
-                $REQUEST->arPost['email'],
-                $REQUEST->arPost['password']
-            );
+        if ($this->validateData($REQUEST->arPost)) {
+            if ($this->validatePasswords($REQUEST->arPost['password'], $REQUEST->arPost['password-confirm'])) {
+                if ($this->isUserNotExists($REQUEST->arPost['username'], $REQUEST->arPost['email'])) {
+                    $this->addUser(
+                        $REQUEST->arPost['username'],
+                        $REQUEST->arPost['email'],
+                        $REQUEST->arPost['password']
+                    );
 
-            $this->result['email'] = $REQUEST->arPost['email'];
-            $this->sendVerificationLink($this->result['email'], $this->token);
-            $this->setStatus(Register::STATUS['SUCCESS']);
-        } else {
-            $this->setStatus(Register::STATUS['ALREADY_EXISTS']);
+                    $this->sendVerificationLink($REQUEST->arPost['email'], $this->token);
+                }
+            }
         }
     }
 
@@ -66,11 +92,16 @@ class Register extends Model
             ->or('email=:email')
             ->execute([
                 '#users' => $this->params['TABLE'],
-                ':username' => $username,
+                ':username' => strtolower($username),
                 ':email' => $email,
             ]);
 
-        return (empty($user) ? true : false);
+        if (!empty ($user)) {
+            $this->result['STATUS'] = Register::STATUS['ERROR_EXISTS'];
+            return (false);
+        } else {
+            return (true);
+        }
     }
 
     /**
@@ -92,7 +123,7 @@ class Register extends Model
             ])
             ->execute([
                 '#users' => $this->params['TABLE'],
-                ':username' => $username,
+                ':username' => strtolower($username),
                 ':email' => $email,
                 ':password' => RegistrationHelper::encryptPassword($password),
                 ':token' => $this->token,
@@ -108,5 +139,8 @@ class Register extends Model
             'Завершение регистрации | Camagru',
             '<p>Вы успешно зарегистрировались на сайте. Для завершения перейти по ссылке <a href="' . $verificationLink . '">подтвеждения</a>.'
         );
+
+        $this->result['STATUS'] = Register::STATUS['SUCCESS'];
+        $this->result['STATUS']['TEXT'] = str_replace('#EMAIL#', $email, $this->result['STATUS']['TEXT']);
     }
 }

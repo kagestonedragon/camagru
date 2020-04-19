@@ -117,6 +117,13 @@ $routerConfig = [
         ],
     ],
     [
+        'PATTERN' => '/^(\/ajax\/registration\/)$/',
+        'LOCATION' => '/site/ajax/index.php',
+        'PARAMS' => [
+            'ACTION' => 'FORM_REGISTRATION',
+        ],
+    ],
+    [
         'PATTERN' => '/^(\/registration\/)(\S*)\/$/',
         'LOCATION' => '/site/registration/index.php',
         'PARAMS' => [

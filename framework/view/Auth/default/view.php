@@ -32,9 +32,9 @@ use Framework\Models\Auth\Authorize;
         request.addEventListener('readystatechange', function () {
             if (request.readyState === 4 && request.status === 200) {
                 const resultAjax = JSON.parse(request.responseText);
-                if (parseInt(resultAjax['status']['CODE']) >= 500) {
+                if (parseInt(resultAjax['STATUS']['CODE']) >= 500) {
                     errorText.style.display = 'block';
-                    errorText.innerHTML = resultAjax['status']['TEXT'];
+                    errorText.innerHTML = resultAjax['STATUS']['TEXT'];
 
                 } else {
                     document.location.href = 'https://kagestonedragon.tech';

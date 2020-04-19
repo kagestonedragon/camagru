@@ -21,6 +21,7 @@
             <p style="display: none; color: red;" id="js-error">Ошибка ДАДА</p>
             <input class="form__item-submit" type="submit" id="js-submit" value="Зарегистрироваться">
         </form>
+        <p style="color: green; display: none;" id="js-success">Ошибка ДАДА</p>
     </div>
 </article>
 
@@ -30,16 +31,21 @@
         const request = new XMLHttpRequest();
         request.open('POST', url);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        request.send('username=' + login + 'email=' + email + '&password=' + password + '&password_confirm=' + password_confirm);
+        request.send('username=' + username + '&email=' + email + '&password=' + password + '&password-confirm=' + password_confirm);
         request.addEventListener('readystatechange', function () {
             if (request.readyState === 4 && request.status === 200) {
                 const resultAjax = JSON.parse(request.responseText);
-                if (parseInt(resultAjax['status']['CODE']) >= 500) {
+                if (parseInt(resultAjax['STATUS']['CODE']) >= 500) {
                     errorText.style.display = 'block';
-                    errorText.innerHTML = resultAjax['status']['TEXT'];
-
+                    errorText.innerHTML = resultAjax['STATUS']['TEXT'];
                 } else {
-                    document.location.href = 'https://kagestonedragon.tech';
+                    const form = document.getElementById('js-form');
+                    const successMessage = document.getElementById('js-success');
+
+                    form.style.display = 'none';
+                    successMessage.innerHTML = resultAjax['STATUS']['TEXT'];
+                    successMessage.style.display = 'block';
+                    //document.location.href = 'https://kagestonedragon.tech';
                 }
             }
         });
@@ -54,7 +60,10 @@
         const email = document.getElementById('js-email').value;
         const password = document.getElementById('js-password').value;
         const password_confirm = document.getElementById('js-password-confirm').value;
+        console.log(username);
+        console.log(email);
 
         errorText.style.display = 'none';
+        sendAjax(url, username, email, password, password_confirm);
     });
 </script>
