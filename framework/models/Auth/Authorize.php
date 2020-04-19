@@ -20,15 +20,15 @@ class Authorize extends Model
     const STATUS = [
         'ERROR_FIELDS' => [
             'CODE' => '500',
-            'TEXT' => 'Не верно заполненые поля!',
+            'TEXT' => 'Неверно заполнены поля!',
         ],
         'ERROR_USER' => [
             'CODE' => '501',
-            'TEXT' => 'Такого пользователя не существует!',
+            'TEXT' => 'Такого пользователя не существует! Возможно, неверно введены данные.',
         ],
         'ERROR_VERIFIED' => [
             'CODE' => '502',
-            'TEXT' => 'Требуется подтвеждение аккаунта. Проверьте почтовый адресQ',
+            'TEXT' => 'Требуется подтвеждение аккаунта. Проверьте почтовый адрес!',
         ],
         'SUCCESS' => [
             'CODE' => '200',
@@ -36,28 +36,38 @@ class Authorize extends Model
         ],
     ];
 
-    protected function Process()
+    protected function process()
     {
         global $REQUEST;
 
-        $username = $REQUEST->arPost['username'];
-        $password = $REQUEST->arPost['password'];
-        if ($this->validateData($username, $password)) {
-            if ($user = $this->validateUser($username, $password)) {
-                $this->authorize($user['id'], $user['username']);
-                $this->result['status'] = Authorize::STATUS['SUCCESS'];
-            }
-        } else {
-            $this->result['status'] = Authorize::STATUS['ERROR_FIELDS'];
-        }
+        if ($this->validateData($REQUEST->arPost)) {
+            $username = $REQUEST->arPost['username'];
+            $password = $REQUEST->arPost['password'];
 
+            $user = $this->getUser($username, $password);
+            if ($this->validateUser($user)) {
+                $this->authorize($user['id'], $user['username']);
+            }
+        }
     }
 
-    private function validateData($username, $password)
+    private function validateData($data)
     {
-        if (empty($username) || $username == '') {
+        if ((empty($data)) || empty($data['username']) || empty($data['password'])) {
+            $this->result['STATUS'] = Authorize::STATUS['ERROR_FIELDS'];
             return (false);
-        } else if (empty($password) || $password == '') {
+        }
+
+        return (true);
+    }
+
+    private function validateUser($user)
+    {
+        if (empty($user)) {
+            $this->result['STATUS'] = Authorize::STATUS['ERROR_USER'];
+            return (false);
+        } else if ($user['verified'] == '0') {
+            $this->result['STATUS'] = Authorize::STATUS['ERROR_VERIFIED'];
             return (false);
         }
 
@@ -74,6 +84,7 @@ class Authorize extends Model
         global $USER;
 
         $USER->authorize($userId, $username);
+        $this->result['STATUS'] = Authorize::STATUS['SUCCESS'];
     }
 
     /**
@@ -82,7 +93,7 @@ class Authorize extends Model
      * @param string $password
      * @return array|mixed|string
      */
-    private function validateUser(string $username, string $password)
+    private function getUser(string $username, string $password)
     {
         $user = (new ORM('#users'))
             ->select([
@@ -95,20 +106,11 @@ class Authorize extends Model
             ->execute(
                 [
                     '#users' => $this->params['TABLE'],
-                    ':username' => $username,
+                    ':username' => strtolower($username),
                     ':password' => RegistrationHelper::encryptPassword($password),
                 ]
             );
 
-        if (empty($user)) {
-            $this->result['status'] = Authorize::STATUS['ERROR_USER'];
-            return (false);
-        } else if ($user['verified'] == '0') {
-            $this->result['status'] = Authorize::STATUS['ERROR_VERIFIED'];
-            return (false);
-        } else {
-            return ($user);
-        }
+        return ($user);
     }
-
 }
