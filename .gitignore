@@ -3,5 +3,7 @@ framework/upload/
 framework/logs/
 markups/vendor/node_modules/
 composer
-composer.lock
+composer.json
 vendor/
+index.php
+.htaccess
