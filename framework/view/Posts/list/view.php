@@ -5,7 +5,6 @@
 global $USER;
 $userId = $USER->getId();
 $username = $USER->getUsername();
-//\Framework\Modules\Debugger::show($result['COMMENTARIES']);
 ?>
 <?if (!empty($result['ITEMS'])) :?>
     <!-- COMMENT TEMPLATE -->

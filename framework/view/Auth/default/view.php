@@ -36,10 +36,9 @@ use Framework\Models\Auth\Authorize;
                     errorText.style.display = 'block';
                     errorText.innerHTML = resultAjax['status']['TEXT'];
 
-                    console.log(errorText);
+                } else {
+                    document.location.href = 'https://kagestonedragon.tech';
                 }
-                console.log(resultAjax);
-                //return (resultAjax);
             }
         });
     }

@@ -11,9 +11,22 @@ class Register extends Model
 {
     const VERIFICATION_LINK = '/registration/#TOKEN#/';
     const STATUS = [
-        'NOT_VALID_DATA' => 4200,
-        'ALREADY_EXISTS' => 4201,
-        'SUCCESS' => 4202,
+        'ERROR_FIELDS' => [
+            'CODE' => '500',
+            'TEXT' => 'Неверно заполнены поля!',
+        ],
+        'ERROR_EXISTS' => [
+            'CODE' => '501',
+            'TEXT' => 'Такой пользователь уже существует!',
+        ],
+        'ERROR_PASSWORD' => [
+            'CODE' => '502',
+            'TEXT' => 'Пароль не совпадают!',
+        ],
+        'SUCCESS' => [
+            'CODE' => '200',
+            'TEXT' => 'Успешно!',
+        ],
     ];
 
     private string $token = '';
