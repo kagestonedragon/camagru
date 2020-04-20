@@ -46,7 +46,7 @@ class Authorize extends Model
 
             $user = $this->getUser($username, $password);
             if ($this->validateUser($user)) {
-                $this->authorize($user['id'], $user['username']);
+                $this->authorize($user['id'], $user['username'], $user['email']);
             }
         }
     }
@@ -78,12 +78,13 @@ class Authorize extends Model
      * Метод авторизации пользователя
      * @param string $userId
      * @param string $username
+     * @param string $email
      */
-    private function authorize(string $userId, string $username)
+    private function authorize(string $userId, string $username, string $email)
     {
         global $USER;
 
-        $USER->authorize($userId, $username);
+        $USER->authorize($userId, $username, $email);
         $this->result['STATUS'] = Authorize::STATUS['SUCCESS'];
     }
 
@@ -99,17 +100,16 @@ class Authorize extends Model
             ->select([
                     'id',
                     'username',
+                    'email',
                     'verified',
             ])
             ->where('username=:username')
             ->and('password=:password')
-            ->execute(
-                [
+            ->execute([
                     '#users' => $this->params['TABLE'],
                     ':username' => strtolower($username),
                     ':password' => RegistrationHelper::encryptPassword($password),
-                ]
-            );
+            ]);
 
         return ($user);
     }

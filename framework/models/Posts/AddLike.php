@@ -14,12 +14,22 @@ class AddLike extends Model
     {
         global $USER;
         global $REQUEST;
+        global $APPLICATION;
+        global $dbTables;
 
         $userId = $USER->getId();
         $postId = $REQUEST->arGet['ID'];
         if ($this->validateLike($postId, $userId)) {
             $this->addLike($postId);
             $this->addConnection($postId, $userId);
+            $APPLICATION->loadModel(
+                'Notifications::Notify',
+                [
+                    'TABLE' => $dbTables['NOTIFICATIONS'],
+                    'TABLE_USERS' => $dbTables['USERS'],
+                    ''
+                ]
+            )
         }
     }
 

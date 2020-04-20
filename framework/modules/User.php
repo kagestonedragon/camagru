@@ -28,12 +28,13 @@ class User
      * @param string $username
      * @return bool
      */
-    public function authorize(string $id, string $username)
+    public function authorize(string $id, string $username, string $email)
     {
         if (!$this->isAuthorized()) {
             $_SESSION['AUTHORIZED_USER'] = [
                 'ID' => $id,
                 'USERNAME' => $username,
+                'EMAIL' => $email,
                 'AUTH_TIME' => date('d-m-Y h:i'),
             ];
 
@@ -74,6 +75,17 @@ class User
     {
         if ($this->isAuthorized()) {
             return ($_SESSION['AUTHORIZED_USER']['ID']);
+        }
+    }
+
+    /**
+     * Метод получения почты текущего юзера
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        if ($this->isAuthorized()) {
+            return ($_SESSION['AUTHORIZED_USER']['EMAIL']);
         }
     }
 }
