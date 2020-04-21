@@ -1,1 +1,0 @@
-<?$APPLICATION->loadController('Ajax');?>
