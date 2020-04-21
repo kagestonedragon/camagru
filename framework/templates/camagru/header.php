@@ -1,4 +1,9 @@
+<?php
+global $USER;
+use Framework\Modules\Application;
+?>
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +14,9 @@
 <body>
     <header>
         <?if ($USER->isAuthorized()):?>
-            <?$APPLICATION->loadView('Profile.header')?>
+            <?Application::loadView('Profile^header')?>
         <?else:?>
-            <?$APPLICATION->loadView('Auth.links')?>
+            <?Application::loadView('Auth^links')?>
         <?endif;?>
     </header>
     <main>

@@ -1,11 +1,46 @@
 <?php
+
+use Framework\Modules\Router;
 /**
  * @noinspection PhpIncludeInspection
  */
 
-//\Framework\Modules\Debugger::show();
-if (!empty($ROUTER->location) && file_exists($ROUTER->location)) {
-    require_once($ROUTER->location);
-} else {
-    echo "404";
-}
+/**
+ * Регистрация
+ */
+    Router::route(
+        'get',
+        '/registration/',
+        'Registration@Form',
+    );
+
+    Router::route(
+        'post',
+        '/registration/new/',
+        'Registration@FormProcessing',
+    );
+
+    Router::route(
+        'update',
+        '/registration/(\S*)/',
+        'Registration@Validation',
+    );
+
+/**
+ * Авторизация
+ */
+    Router::route(
+        'get',
+        '/auth/',
+        'Auth@Form',
+    );
+
+/**
+ * Посты
+ */
+
+Router::route(
+    'get',
+    '/',
+    'Posts@GetList'
+);

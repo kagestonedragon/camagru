@@ -24,7 +24,6 @@ require_once('include/constants/site.php');
  */
 require_once('include/config/database.php');
 require_once('include/config/tables.php');
-require_once('include/config/router.php');
 
 /**
  * Создание объектов модулей

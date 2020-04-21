@@ -2,7 +2,6 @@
 
 namespace Framework\Models\Posts;
 use Framework\Models\Basic\Model;
-use Framework\Modules\Debugger;
 use Framework\Modules\ORM;
 use Framework\Helpers\Posts as PostsHelper;
 
@@ -10,7 +9,7 @@ class GetLikes extends Model
 {
     protected function process()
     {
-        $this->result = $this->getLikes($this->params['ITEMS_IDS']);
+        $this->result = $this->getLikes($this->params['POST_IDS']);
     }
 
     private function getLikes(array $itemIds)

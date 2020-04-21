@@ -75,7 +75,8 @@ function loadController($class)
                 $_SERVER['DOCUMENT_ROOT'],
                 strtolower($class[0]),
                 strtolower($class[1]),
-                $class[2] . '.php',
+                $class[2],
+                $class[3] . '.php',
             ]
         )
     );

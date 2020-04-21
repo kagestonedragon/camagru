@@ -1,6 +1,8 @@
 <?php
 
 namespace Framework\Modules;
+use Framework\Helpers\Router as RouterHelper;
+use Framework\Modules\Application;
 
 class Router
 {
@@ -24,7 +26,30 @@ class Router
         }
     }
 
-    private function setParams(array $params, array $matches)
+    /*private function setParams(array $params, array $matches)
+    {
+        global $REQUEST;
+
+        foreach ($params as $key => $value) {
+            if (isset($matches[$value])) {
+                $REQUEST->arGet[$key] = $matches[$value];
+            } else {
+                $REQUEST->arGet[$key] = $value;
+            }
+        }
+    }*/
+
+    public static function route(string $method, string $url, string $controller, array $params = [])
+    {
+        if (preg_match(RouterHelper::getRegExpUrl($url), $_SERVER['REQUEST_URI'], $matches)) {
+            self::setParams($params, $matches);
+            Application::loadController($controller);
+            Application::renderPage();
+            die();
+        }
+    }
+
+    private static function setParams(array $params, array $matches)
     {
         global $REQUEST;
 

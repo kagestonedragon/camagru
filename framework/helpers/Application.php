@@ -14,19 +14,21 @@ class Application
      */
     public static function getModelNamespace(string $model)
     {
-        $model = str_replace('::', '\\', $model);
+        $model = str_replace('@', '\\', $model);
 
         return ('Framework\Models\\' . $model);
     }
 
     /**
-     * @example Framework\Controllers\Posts
+     * @example Framework\Controllers\Posts\GetList
      * Получение полного неймспейса компоненты
      * @param string $controller
      * @return string
      */
     public static function getControllerNamespace(string $controller)
     {
+        $controller = str_replace('@', '\\', $controller);
+
         return ('Framework\Controllers\\' . $controller);
     }
 
@@ -39,7 +41,7 @@ class Application
      */
     public static function getViewPath(string $view)
     {
-        $view = explode('.', $view);
+        $view = explode('^', $view);
 
         return (
             implode(
@@ -54,5 +56,15 @@ class Application
                 ]
             )
         );
+    }
+
+    public static function getHeaderPath(string $template)
+    {
+        return (FW_TEMPLATES_PATH . '/' . $template . '/header.php');
+    }
+
+    public static function getFooterPath(string $template)
+    {
+        return (FW_TEMPLATES_PATH . '/' . $template . '/footer.php');
     }
 }

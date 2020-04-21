@@ -10,7 +10,7 @@ class GetCommentaries extends Model
 {
     protected function process()
     {
-        $this->result = $this->getCommentaries($this->params['ITEMS_IDS']);
+        $this->result = $this->getCommentaries($this->params['POST_IDS']);
     }
 
     private function getCommentaries(array $itemsIds)
@@ -36,7 +36,7 @@ class GetCommentaries extends Model
             ->order('#commentaries.id',
                 'ASC')
             ->execute([
-                    '#commentaries' => $this->params['TABLE'],
+                    '#commentaries' => $this->params['TABLE_COMMENTARIES'],
                     '#connection' => $this->params['TABLE_CONNECTION'],
                     '#users' => $this->params['TABLE_USERS'],
                 ],

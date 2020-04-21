@@ -2,9 +2,12 @@
 /**
  * @var $result
  */
+use Framework\Modules\Application;
 global $USER;
 $userId = $USER->getId();
 $username = $USER->getUsername();
+
+Application::setPageTitle('Camagru');
 ?>
 <?if (!empty($result['ITEMS'])) :?>
     <!-- COMMENT TEMPLATE -->
@@ -95,6 +98,3 @@ $username = $USER->getUsername();
         </article>
     <?endforeach;?>
 <?endif;?>
-<!--<article class="content">
-    Загрузить еще
-</article>-->

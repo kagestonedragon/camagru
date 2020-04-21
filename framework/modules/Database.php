@@ -8,7 +8,7 @@ use \PDOException as PDOException;
 use Framework\Helpers\Database as DbHelper;
 use Framework\Modules\Localization as Loc;
 
-Loc::init(__FILE__);
+/*Loc::init(__FILE__);*/
 
 /**
  * Class Database

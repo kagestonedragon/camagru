@@ -23,11 +23,8 @@ class GetList extends Model
 
     protected function process()
     {
-        global $APPLICATION;
-        global $USER;
-
         $this->result['ITEMS'] = $this->getItemsList();
-        $itemIds = array_column($this->result['ITEMS'], 'id');
+        /*$itemIds = array_column($this->result['ITEMS'], 'id');
         $this->result['COMMENTARIES'] = $APPLICATION->loadModel(
             GetList::GET_COMMENTARIES['MODEL'],
             [
@@ -44,7 +41,7 @@ class GetList extends Model
                 'ITEMS_IDS' => $itemIds,
             ]
         );
-        PostsHelper::setLikeActions($this->result['ITEMS'], $likes, $USER->getId());
+        PostsHelper::setLikeActions($this->result['ITEMS'], $likes, $USER->getId());*/
     }
 
     /**
@@ -71,7 +68,7 @@ class GetList extends Model
             /*->limit(2)
             ->offset(1)*/
             ->execute([
-                    '#posts' => $this->params['TABLE'],
+                    '#posts' => $this->params['TABLE_POSTS'],
                     '#users' => $this->params['TABLE_USERS'],
                     '#connection' => $this->params['TABLE_CONNECTION'],
                 ],
