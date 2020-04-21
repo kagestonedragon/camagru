@@ -117,4 +117,9 @@ class Application
             self::$header = preg_replace($pattern, $replace, self::$header);
         }
     }
+
+    public static function setAjaxResult($result)
+    {
+        self::$page = json_encode($result);
+    }
 }

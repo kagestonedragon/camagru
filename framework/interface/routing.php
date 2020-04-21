@@ -21,7 +21,7 @@ use Framework\Modules\Router;
     );
 
     Router::route(
-        'update',
+        'patch',
         '/registration/(\S*)/',
         'Registration@Validation',
     );
@@ -39,8 +39,8 @@ use Framework\Modules\Router;
  * Посты
  */
 
-Router::route(
-    'get',
-    '/',
-    'Posts@GetList'
-);
+    Router::route(
+        'get',
+        '/',
+        'Posts@GetList'
+    );

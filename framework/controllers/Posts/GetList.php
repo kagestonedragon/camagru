@@ -15,7 +15,7 @@ class GetList extends Controller
     protected function process()
     {
         global $USER;
-        
+
         if (!$USER->isAuthorized()) {
             Application::redirect('/auth/');
         }
