@@ -10,7 +10,6 @@ function sendAjax(url, login, password) {
             if (parseInt(resultAjax['STATUS']['CODE']) >= 500) {
                 errorText.style.display = 'block';
                 errorText.innerHTML = resultAjax['STATUS']['TEXT'];
-
             } else {
                 document.location.href = 'https://kagestonedragon.tech';
             }

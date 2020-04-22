@@ -41,11 +41,13 @@ class Router
 
     public static function route(string $method, string $url, string $controller, array $params = [])
     {
-        if (preg_match(RouterHelper::getRegExpUrl($url), $_SERVER['REQUEST_URI'], $matches)) {
-            self::setParams($params, $matches);
-            Application::loadController($controller);
-            Application::renderPage();
-            die();
+        if ($_SERVER['REQUEST_METHOD'] == strtoupper($method)) {
+            if (preg_match(RouterHelper::getRegExpUrl($url), $_SERVER['REQUEST_URI'], $matches)) {
+                self::setParams($params, $matches);
+                Application::loadController($controller);
+                Application::renderPage();
+                die();
+            }
         }
     }
 

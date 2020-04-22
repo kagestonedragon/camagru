@@ -16,7 +16,7 @@ use Framework\Modules\Router;
 
     Router::route(
         'post',
-        '/registration/new/',
+        '/registration/post/',
         'Registration@FormProcessing',
     );
 
@@ -33,6 +33,12 @@ use Framework\Modules\Router;
         'get',
         '/auth/',
         'Auth@Form',
+    );
+
+    Router::route(
+        'post',
+        '/auth/',
+        'Auth@FormProcessing'
     );
 
 /**

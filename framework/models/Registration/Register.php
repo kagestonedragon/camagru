@@ -33,6 +33,25 @@ class Register extends Model
 
     private string $token = '';
 
+    protected function process()
+    {
+        global $REQUEST;
+
+        if ($this->validateData($REQUEST->arPost)) {
+            if ($this->validatePasswords($REQUEST->arPost['password'], $REQUEST->arPost['password-confirm'])) {
+                if ($this->isUserNotExists($REQUEST->arPost['username'], $REQUEST->arPost['email'])) {
+                    $this->addUser(
+                        $REQUEST->arPost['username'],
+                        $REQUEST->arPost['email'],
+                        $REQUEST->arPost['password']
+                    );
+
+                    $this->sendVerificationLink($REQUEST->arPost['email'], $this->token);
+                }
+            }
+        }
+    }
+
     private function validateData($data)
     {
         if (empty($data) ||
@@ -55,25 +74,6 @@ class Register extends Model
         }
 
         return (true);
-    }
-
-    protected function Process()
-    {
-        global $REQUEST;
-
-        if ($this->validateData($REQUEST->arPost)) {
-            if ($this->validatePasswords($REQUEST->arPost['password'], $REQUEST->arPost['password-confirm'])) {
-                if ($this->isUserNotExists($REQUEST->arPost['username'], $REQUEST->arPost['email'])) {
-                    $this->addUser(
-                        $REQUEST->arPost['username'],
-                        $REQUEST->arPost['email'],
-                        $REQUEST->arPost['password']
-                    );
-
-                    $this->sendVerificationLink($REQUEST->arPost['email'], $this->token);
-                }
-            }
-        }
     }
 
     /**
