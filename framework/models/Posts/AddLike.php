@@ -3,6 +3,7 @@
 namespace Framework\Models\Posts;
 use Framework\Models\Basic\Model;
 use Framework\Modules\ORM;
+use Framework\Helpers\Posts as PostsHelper;
 
 /**
  * Class AddLike
@@ -10,26 +11,29 @@ use Framework\Modules\ORM;
  */
 class AddLike extends Model
 {
+    const STATUS = [
+        'ERROR_LIKE_EXISTS' => [
+            'CODE' => 500,
+            'TEXT' => 'Лайк уже проставлен для этой фотографии!',
+        ],
+        'SUCCESS' => [
+            'CODE' => 200,
+            'TEXT' => 'Лайк успешно поставлен!',
+        ],
+    ];
+
     protected function process()
     {
         global $USER;
         global $REQUEST;
-        global $APPLICATION;
-        global $dbTables;
 
         $userId = $USER->getId();
         $postId = $REQUEST->arGet['ID'];
         if ($this->validateLike($postId, $userId)) {
             $this->addLike($postId);
             $this->addConnection($postId, $userId);
-            $APPLICATION->loadModel(
-                'Notifications::Notify',
-                [
-                    'TABLE' => $dbTables['NOTIFICATIONS'],
-                    'TABLE_USERS' => $dbTables['USERS'],
-                    ''
-                ]
-            )
+            $result['NOTIFY_USER_ID'] = PostsHelper::getPostAuthor($postId);
+            $this->setStatus(AddLike::STATUS['SUCCESS']);
         }
     }
 
@@ -50,6 +54,11 @@ class AddLike extends Model
             ]);
     }
 
+    /**
+     * Метод добавление связи
+     * @param string $postId
+     * @param string $userId
+     */
     private function addConnection(string $postId, string $userId)
     {
         (new ORM('#connection'))
@@ -84,6 +93,11 @@ class AddLike extends Model
                 ':post_id' => $postId,
             ]);
 
-        return (empty($result) ? true : false);
+        if (empty($result)) {
+            return (true);
+        } else {
+            $this->setStatus(AddLike::STATUS['ERROR_LIKE_EXISTS']);
+            return (false);
+        }
     }
 }

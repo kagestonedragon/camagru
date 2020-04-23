@@ -1,11 +1,31 @@
 <?php
 
 namespace Framework\Helpers;
-
-use Framework\Modules\Debugger;
+use Framework\Helpers\ORM;
 
 class Posts
 {
+    public static function getPostAuthor(string $postId)
+    {
+        global $dbTables;
+
+        $result = (new ORM('#connection'))
+            ->select([
+                'user_id'
+            ])
+            ->where('post_id=:post_id')
+            ->execute([
+                '#connection' => $dbTables['USERS_POSTS'],
+                ':post_id' => $postId,
+            ]);
+
+        if (!empty($result['user_id'])) {
+            return ($result['user_id']);
+        } else {
+            return (false);
+        }
+    }
+
     public static function generatePathToImages(array &$items, string $dir)
     {
         foreach ($items as $itemKey => $itemValue) {

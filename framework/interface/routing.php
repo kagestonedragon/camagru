@@ -41,6 +41,12 @@ use Framework\Modules\Router;
         'Auth@FormProcessing'
     );
 
+    Router::route(
+        'get',
+        '/logout/',
+        'Auth@Logout'
+    );
+
 /**
  * Посты
  */
@@ -49,4 +55,13 @@ use Framework\Modules\Router;
         'get',
         '/',
         'Posts@GetList'
+    );
+
+    Router::route(
+        'get',
+        '/items/([0-9]+)/likes/add/',
+        'Posts@AddLike',
+        [
+            'ID' => 1,
+        ]
     );

@@ -9,6 +9,7 @@ use Framework\Modules\Application;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/markups/css/normalize.css">
     <link rel="stylesheet" href="/markups/vendor/dist/0.css">
+    <link rel="icon" href="/markups/favicon.ico">
     <title>Camagru</title>
 </head>
 <body>

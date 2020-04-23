@@ -63,7 +63,7 @@ class Notify extends Model
             $message = '<p>Пользователь ' . $username . ' оставил новый комментарий под вашим постом!</p>';
         } else if ($type == Notify::TYPES['LIKE']) {
             $subject = 'Новая оценка | Camagru';
-            $message = '<p>Польователь ' . $username . ' оценил ваш пост лайком!</p>';
+            $message = '<p>Пользователь ' . $username . ' оценил ваш пост лайком!</p>';
         }
 
         if (!empty($subject) && !empty($message)) {

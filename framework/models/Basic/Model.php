@@ -29,8 +29,8 @@ class Model
         return ($this->result);
     }
 
-    protected function setStatus(string $status)
+    protected function setStatus($status)
     {
-        $this->result['status'] = $status;
+        $this->result['STATUS'] = $status;
     }
 }

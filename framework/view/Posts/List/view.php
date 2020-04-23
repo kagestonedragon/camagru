@@ -8,6 +8,7 @@ $userId = $USER->getId();
 $username = $USER->getUsername();
 
 Application::setPageTitle('Camagru');
+Application::attachJsScript(__DIR__ . '/script.js');
 ?>
 <?if (!empty($result['ITEMS'])) :?>
     <!-- COMMENT TEMPLATE -->
