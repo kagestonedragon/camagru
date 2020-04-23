@@ -1,9 +1,6 @@
 <?php
 
 use Framework\Modules\Router;
-/**
- * @noinspection PhpIncludeInspection
- */
 
 /**
  * Регистрация
@@ -58,7 +55,7 @@ use Framework\Modules\Router;
     );
 
     Router::route(
-        'get',
+        'patch',
         '/items/([0-9]+)/likes/add/',
         'Posts@AddLike',
         [

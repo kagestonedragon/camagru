@@ -98,6 +98,8 @@ class Application
         echo self::$header;
         echo self::$page;
         echo self::$footer;
+
+        die();
     }
 
     public static function attachJsScript(string $path)
