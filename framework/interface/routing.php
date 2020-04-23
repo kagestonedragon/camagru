@@ -62,3 +62,12 @@ use Framework\Modules\Router;
             'ID' => 1,
         ]
     );
+
+    Router::route(
+        'patch',
+        '/items/([0-9]+)/likes/delete/',
+        'Posts@DeleteLike',
+        [
+            'ID' => 1,
+        ]
+    );
