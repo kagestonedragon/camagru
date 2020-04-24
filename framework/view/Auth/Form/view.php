@@ -16,7 +16,8 @@ Application::attachJsScript(__DIR__ . '/script.js');
                 <div class="form__item-desc">Пароль</div>
                 <input class="form__item-text" id="js-password" type="password" name="password" value="">
             </label>
-            <p style="color: red; display: none; text-align: center;" id="js-error">Ошибка ДАДА</p>
+            <div class="loader" id='js-preloader' style="display: none;">Loading...</div>
+            <p class="form__item-error" id="js-error" style="display: none;">Ошибка</p>
             <input class="form__item-submit" id="js-button" type="submit" value="Войти">
         </form>
     </div>
