@@ -254,7 +254,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__.e(/*! import() */ 0).then(__webpack_require__.t.bind(null, /*! ./assets/scss/webpack.scss */ \"./assets/scss/webpack.scss\", 7));\n\n//# sourceURL=webpack:///./styles.js?");
+eval("__webpack_require__.e(/*! import() */ 0).then(__webpack_require__.t.bind(null, /*! ./assets/instagram/webpack.scss */ \"./assets/instagram/webpack.scss\", 7));\n\n//# sourceURL=webpack:///./styles.js?");
 
 /***/ })
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/vendor/dist/0.css">
+    <link rel="icon" href="/images//favicon.ico">
+    <!--<link rel="stylesheet" href="/markups/css/normalize.css">
+    <link rel="stylesheet" href="/markups/vendor/dist/0.css">-->
+    <title>Camagru</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="nav__item-logo">
+                <a href="/">Camagru</a>
+            </div>
+            <div class="nav__item-menu">
+                <div id="icon-add">
+                    <i class="fas fa-plus icons"></i>
+                </div>
+                <!--<div id="icon-notifications-new">
+                    <i class="fas fa-bell icons"></i>
+                </div>-->
+                <div id="icon-notifications">
+                    <i class="far fa-bell icons"></i>
+                </div>
+                <div class="nav__item-user" id="icon-user">
+                    <img src="images/photo.jpg">
+                </div>
+                <div id="icon-sign-out">
+                    <i class="fas fa-sign-out-alt icons"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="posts">
+            <article class="posts__item">
+                <div class="posts__item-header">
+                    <div class="posts__item-header__item">
+                        <img class="posts__item-header__item-img" src="images/photo.jpg">
+                        <div class="posts__item-header__item-name">kagestonedragon</div>
+                    </div>
+                </div>
+                <div class="posts__item-img">
+                    <img src="images/photo.jpg">
+                </div>
+                <div class="posts__item-footer">
+                    <div class="posts__item-footer__likes">
+                        <i class="far fa-heart icons__like"></i>
+                        <div class="posts__item-footer__likes-counter">50,425 likes</div>
+                    </div>
+                    <div class="posts__item-footer__info">
+                        <div class="posts__item-footer__info-author">kagestonedragon</div>
+                        <div class="posts__item-footer__info-desc">В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто. В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто.</div>
+                    </div>
+                    <!--<div class="posts__item-footer__date">
+                        27.04.2020
+                    </div>-->
+                    <div class="posts__item-footer__more">
+                        Показать больше комментариев...
+                    </div>
+                    <div class="posts__item-footer__comments">
+                        <div>
+                            <div class="posts__item-footer__comments-author">admin</div>
+                            <div class="posts__item-footer__comments-text">текст</div>
+                        </div>
+                        <div>
+                            <div class="posts__item-footer__comments-author">admin</div>
+                            <div class="posts__item-footer__comments-text">В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто. </div>
+                        </div>
+                    </div>
+                    <div class="posts__item-footer__comment-new">
+                        <form>
+                            <textarea class="posts__item-footer__comment-new__text" placeholder="Напиши комментарий"></textarea>
+                            <button class="posts__item-footer__comment-new__button" id="button" type="submit">Отправить</button>
+                            <div class="lds-dual-ring" style="display: none;" id="preloader"></div>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="users">
+            <div class="users__item-current">
+                <img class="users__item-current__img" src="images/photo.jpg">
+                <div class="users__item-current__name">kagestonedragon</div>
+            </div>
+            <div class="users__item-new">
+                <div class="users__item-new__title">
+                    <div class="users__item-new__title-new">Новые</div>
+                    <div class="users__item-new__title-all">Все</div>
+                </div>
+                <div class="users__item-new__item">
+                    <img class="users__item-new__item-img" src="images/photo.jpg">
+                    <div class="users__item-new__item-name">admin</div>
+                </div>
+                <div class="users__item-new__item">
+                    <img class="users__item-new__item-img" src="images/photo.jpg">
+                    <div class="users__item-new__item-name">test_account</div>
+                </div>
+                <div class="users__item-new__item">
+                    <img class="users__item-new__item-img" src="images/photo.jpg">
+                    <div class="users__item-new__item-name">test_account</div>
+                </div>
+                <div class="users__item-new__item">
+                    <img class="users__item-new__item-img" src="images/photo.jpg">
+                    <div class="users__item-new__item-name">test_account</div>
+                </div>
+                <div class="users__item-new__item">
+                    <img class="users__item-new__item-img" src="images/photo.jpg">
+                    <div class="users__item-new__item-name">test_account</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const button = document.getElementById('button');
+        const preloader = document.getElementById('preloader');
+
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            button.style.display = 'none';
+            preloader.style.display = 'block';
+        })
+    </script>
+</body>
+</html>

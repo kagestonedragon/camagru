@@ -1,1 +1,1 @@
-import("./assets/scss/webpack.scss");
+import("./assets/instagram/webpack.scss");
