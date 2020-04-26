@@ -2,7 +2,7 @@
 
 namespace Framework\Controllers\Registration;
 use Framework\Controllers\Basic\Controller;
-use Framework\Helpers\Application;
+use Framework\Modules\Application;
 
 class FormProcessing extends Controller
 {

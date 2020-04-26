@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/vendor/dist/0.css">
+    <link rel="icon" href="/images//favicon.ico">
+    <!--<link rel="stylesheet" href="/markups/css/normalize.css">
+    <link rel="stylesheet" href="/markups/vendor/dist/0.css">
+    <link rel="icon" href="/markups/images/favicon.ico">-->
+    <title>Camagru</title>
+</head>
+<body>
+<div class="content-form">
+    <div class="content-form__mockup">
+        <img src="images/mockup.png">
+    </div>
+    <div class="form">
+        <div class="form__item">
+            <div class="form__item-title">
+                Camagru
+            </div>
+            <div class="form__item-success" style="display: none;">
+                <div>
+                    Для восстановления пароль проверьте ваш почтовый адрес.
+                </div>
+                <div style="margin-top: 10px;">
+                    Письмо отправлено на <span style="color: #0095F6;">kagestonedragon@gmail.com</span>.
+                </div>
+            </div>
+            <form style="margin-top: 55px;">
+                <div style="display: block;">
+                    <div  class="form__item-error" id="js-error" style="visibility: hidden;">Ошибка АХХХА</div>
+                    <div class="form__item-elem">
+                        <input type="text" name="text" value="" id="username" placeholder=" ">
+                        <label class="form__item-elem__placeholder" for="username">Почтовый адрес</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <div class="lds-dual-ring" style="display: none; position: absolute; margin-top: 50px; margin-left: 160px;" id="preloader"></div>
+                        <input class="form__item-elem__submit" id="js-submit" style="top: 53px;" type="submit" id="test" name="submit" value="Восстановить пароль">
+                    </div>
+                </div>
+            </form>
+            <a class="form__item-fgtpw" href="#" style="margin-top: 105px; text-align: center; display: block;">Вспомнили пароль?</a>
+        </div>
+        <div class="form__item" style="height: 64px; margin-top: 15px;">
+            <div class="form__item-signup">Нет аккаунта? <a href="#">Зарегистрируйтесь</a></div>
+        </div>
+        <div class="form__item-github">
+            <a href="https://github.com/kagestonedragon/camagru" target="_blank"><img src="images/github.png"></a>
+        </div>
+    </div>
+</div>
+<script>
+    const submit = document.getElementById('js-submit');
+    const error = document.getElementById('js-error');
+    const preloader = document.getElementById('preloader');
+
+    submit.addEventListener('click', function(e) {
+        e.preventDefault();
+        submit.style.display = 'none';
+        error.style.visibility = 'visible';
+        preloader.style.display = 'block';
+    });
+</script>
+</body>
+</html>

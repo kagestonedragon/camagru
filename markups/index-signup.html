@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/vendor/dist/0.css">
+    <link rel="icon" href="/images//favicon.ico">
+    <!--<link rel="stylesheet" href="/markups/css/normalize.css">
+    <link rel="stylesheet" href="/markups/vendor/dist/0.css">
+    <link rel="icon" href="/markups/images/favicon.ico">-->
+    <title>Camagru</title>
+</head>
+<body>
+<div class="content-form">
+    <div class="content-form__mockup">
+        <img src="images/mockup.png">
+    </div>
+    <div class="form">
+        <div class="form__item">
+            <div class="form__item-title" style="margin-top: 20px;">
+                Camagru
+            </div>
+            <div class="form__item-success" id="js-success-message" style="display: none;">
+                <div>
+                    Для завершения регистрации подтвердите почтовый адрес.
+                </div>
+                <div style="margin-top: 10px;">
+                    Письмо отправлено на <span id="js-email-text" style="color: #0095F6;">kagestonedragon@gmail.com</span>.
+                </div>
+            </div>
+            <form style="margin-top: 5px;">
+                <div id="js-form-inner">
+                    <div  class="form__item-error" id="js-error" style="visibility: hidden;">Ошибка АХХХА</div>
+                    <div class="form__item-elem">
+                        <input type="text" name="text" value="" id="username" placeholder=" ">
+                        <label class="form__item-elem__placeholder" for="username">Имя пользователя</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <input type="text" name="text" value="" style="margin-top:45px;" id="email" placeholder=" ">
+                        <label class="form__item-elem__placeholder" style="margin-top:45px;" for="email">Почтовый адрес</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <input type="password" name="text" value="" style="margin-top:90px;" id="password" placeholder=" ">
+                        <label class="form__item-elem__placeholder" style="margin-top:90px;" for="password">Пароль</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <input type="password" name="text" value="" style="margin-top:135px;" id="password-confirm" placeholder=" ">
+                        <label class="form__item-elem__placeholder" style="margin-top:135px;" for="password-confirm">Подтверждение пароля</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <div class="lds-dual-ring" style="display: none; position: absolute; margin-top: 190px; margin-left: 160px;" id="preloader"></div>
+                        <input class="form__item-elem__submit" id="js-submit" style="top: 190px;" type="submit" id="test" name="submit" value="Зарегистрироваться">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="form__item" style="height: 64px; margin-top: 15px;">
+            <div class="form__item-signup">Есть аккаунт? <a href="#">Войдите</a></div>
+        </div>
+        <div class="form__item-github">
+            <a href="https://github.com/kagestonedragon/camagru" target="_blank"><img src="images/github.png"></a>
+        </div>
+    </div>
+</div>
+<script>
+    const submit = document.getElementById('js-submit');
+    const error = document.getElementById('js-error');
+    const preloader = document.getElementById('preloader');
+
+    submit.addEventListener('click', function(e) {
+        e.preventDefault();
+        submit.style.display = 'none';
+        error.style.visibility = 'visible';
+        preloader.style.display = 'block';
+    });
+</script>
+</body>
+</html>

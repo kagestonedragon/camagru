@@ -13,23 +13,31 @@ use Framework\Modules\Router;
 
     Router::route(
         'post',
-        '/registration/post/',
+        '/registration/',
         'Registration@FormProcessing',
     );
 
     Router::route(
-        'patch',
+        'get',
         '/registration/(\S*)/',
-        'Registration@Validation',
+        'Registration@Verification', [
+            'TOKEN' => 1,
+        ]
     );
 
 /**
  * Авторизация
  */
-    Router::route(
+    /*Router::route(
         'get',
         '/auth/',
         'Auth@Form',
+    );*/
+
+    Router::route(
+        'get',
+        '/auth/',
+        'Auth@Form'
     );
 
     Router::route(
@@ -42,6 +50,30 @@ use Framework\Modules\Router;
         'get',
         '/logout/',
         'Auth@Logout'
+    );
+
+/**
+ * Сброс пароля
+ */
+    Router::route(
+        'get',
+        '/reset/',
+        'Reset@FormEmail'
+    );
+
+    Router::route(
+        'post',
+        '/reset/',
+        'Reset@FormEmailProcessing'
+    );
+
+    Router::route(
+        'get',
+        '/reset/(\S*)/(\S*)/',
+        'Reset@FormPassword', [
+            'USERNAME' => 1,
+            'TOKEN' => 2,
+        ]
     );
 
 /**

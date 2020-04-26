@@ -1,15 +1,25 @@
 <?php
 
 namespace Framework\Models\Registration;
+use Framework\Controllers\Registration\Verification;
 use Framework\Models\Basic\Model;
 use Framework\Modules\ORM;
 
-class Verificate extends Model
+class Verify extends Model
 {
     const STATUS = [
-        'ALREADY_VERIFIED' => 1,
-        'NOT_VALID_TOKEN' => 0,
-        'VERIFICATION' => 2,
+        'ERROR_ALREADY_VERIFIED' => [
+            'CODE' => 500,
+            'TEXT' => 'Пользователь уже верифицирован',
+        ],
+        'ERROR_NOT_VALID_TOKEN' => [
+            'CODE' => 501,
+            'TEXT' => 'Невалидный токен',
+        ],
+        'SUCCESS' => [
+            'CODE' => 200,
+            'TEXT' => 'Успешно!'
+        ]
     ];
 
     protected function process()
@@ -17,13 +27,14 @@ class Verificate extends Model
         global $REQUEST;
 
         $token = $REQUEST->arGet['TOKEN'];
-        $this->setStatus($this->validateVerification($token));
-        if ($this->result['status'] == Verificate::STATUS['VERIFICATION']) {
-            $this->verificate($token);
+        $code = $this->validateVerification($token);
+
+        if ($code == Verify::STATUS['SUCCESS']['CODE']) {
+            $this->verify($token);
         }
     }
 
-    private function verificate(string $token)
+    private function verify(string $token)
     {
         (new ORM('#users'))
             ->update([
@@ -49,11 +60,13 @@ class Verificate extends Model
             ]);
 
         if (empty($result)) {
-            return (Verificate::STATUS['NOT_VALID_TOKEN']);
+            $this->setStatus(Verify::STATUS['ERROR_NOT_VALID_TOKEN']);
         } else if ($result['verified'] == 1) {
-            return (Verificate::STATUS['ALREADY_VERIFIED']);
+            $this->setStatus(Verify::STATUS['ERROR_ALREADY_VERIFIED']);
         } else {
-            return (Verificate::STATUS['VERIFICATION']);
+            $this->setStatus(Verify::STATUS['SUCCESS']);
         }
+
+        return ($this->result['STATUS']['CODE']);
     }
 }

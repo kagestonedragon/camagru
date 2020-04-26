@@ -1,17 +1,17 @@
 <?php
 
-namespace Framework\Controllers\Auth;
+namespace Framework\Controllers\Reset;
 use Framework\Controllers\Basic\Controller;
 use Framework\Modules\Application;
 
-class Form extends Controller
+class FormPassword extends Controller
 {
-    const VIEW = 'Auth^NewForm';
+    const VIEW = 'Reset^FormPassword';
 
     protected function process()
     {
         Application::loadHeader(SITE_SHORT_TEMPLATE);
-        Application::loadView(Form::VIEW);
+        Application::loadView(FormPassword::VIEW);
         Application::loadFooter(SITE_SHORT_TEMPLATE);
     }
 }

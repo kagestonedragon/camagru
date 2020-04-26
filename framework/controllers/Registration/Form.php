@@ -6,12 +6,12 @@ use Framework\Modules\Application;
 
 class Form extends Controller
 {
-    const VIEW = 'Registration^Form';
+    const VIEW = 'Registration^NewForm';
 
     protected function process()
     {
-        Application::loadHeader(SITE_DEFAULT_TEMPLATE);
+        Application::loadHeader(SITE_SHORT_TEMPLATE);
         Application::loadView(Form::VIEW);
-        Application::loadFooter(SITE_DEFAULT_TEMPLATE);
+        Application::loadFooter(SITE_SHORT_TEMPLATE);
     }
 }
