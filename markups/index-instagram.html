@@ -2,11 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/normalize.css">
+    <!--<link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/vendor/dist/0.css">
-    <link rel="icon" href="/images//favicon.ico">
-    <!--<link rel="stylesheet" href="/markups/css/normalize.css">
-    <link rel="stylesheet" href="/markups/vendor/dist/0.css">-->
+    <link rel="icon" href="/images//favicon.ico">-->
+    <link rel="stylesheet" href="/markups/css/normalize.css">
+    <link rel="stylesheet" href="/markups/vendor/dist/0.css">
+    <link rel="icon" href="/markups/images/favicon.ico">
     <title>Camagru</title>
 </head>
 <body>
@@ -16,20 +17,20 @@
                 <a href="/">Camagru</a>
             </div>
             <div class="nav__item-menu">
-                <div id="icon-add">
-                    <i class="fas fa-plus icons"></i>
+                <div id="icon-add-desktop">
+                    <a href="#"><i class="fas fa-plus icons"></i></a>
                 </div>
                 <!--<div id="icon-notifications-new">
-                    <i class="fas fa-bell icons"></i>
+                    <a href="#"><i class="fas fa-bell icons"></i></a>
                 </div>-->
-                <div id="icon-notifications">
-                    <i class="far fa-bell icons"></i>
+                <div id="icon-notifications-desktop">
+                    <a href="#"><i class="far fa-bell icons"></i></a>
                 </div>
-                <div class="nav__item-user" id="icon-user">
-                    <img src="images/photo.jpg">
+                <div class="nav__item-user" id="icon-user-desktop">
+                    <a href="#"><img src="images/photo.jpg"></a>
                 </div>
-                <div id="icon-sign-out">
-                    <i class="fas fa-sign-out-alt icons"></i>
+                <div id="icon-sign-out-desktop">
+                    <a href="#"><i class="fas fa-sign-out-alt icons"></i></a>
                 </div>
             </div>
         </nav>
@@ -40,7 +41,9 @@
                 <div class="posts__item-header">
                     <div class="posts__item-header__item">
                         <img class="posts__item-header__item-img" src="images/photo.jpg">
-                        <div class="posts__item-header__item-name">kagestonedragon</div>
+                        <div class="posts__item-header__item-name">
+                            <a href="#">kagestonedragon</a>
+                        </div>
                     </div>
                 </div>
                 <div class="posts__item-img">
@@ -48,27 +51,34 @@
                 </div>
                 <div class="posts__item-footer">
                     <div class="posts__item-footer__likes">
-                        <i class="far fa-heart icons__like"></i>
-                        <div class="posts__item-footer__likes-counter">50,425 likes</div>
+                        <!--<a href="#">
+                            <i class="far fa-heart icons__like"></i>
+                        </a>-->
+                        <a href="#">
+                            <i class="fas fa-heart icons__like icons__liked"></i>
+                        </a>
+                        <div class="posts__item-footer__likes-counter">
+                            <a href="#">50,425 likes</a>
+                        </div>
                     </div>
                     <div class="posts__item-footer__info">
-                        <div class="posts__item-footer__info-author">kagestonedragon</div>
-                        <div class="posts__item-footer__info-desc">В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто. В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто.</div>
+                        <div class="posts__item-footer__info-author">
+                            <a href="#">kagestonedragon</a>
+                        </div>
+                        <div class="posts__item-footer__info-desc">В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто.</div>
                     </div>
                     <!--<div class="posts__item-footer__date">
                         27.04.2020
                     </div>-->
                     <div class="posts__item-footer__more">
-                        Показать больше комментариев...
+                        <a href="#">Показать больше комментариев...</a>
                     </div>
                     <div class="posts__item-footer__comments">
                         <div>
-                            <div class="posts__item-footer__comments-author">admin</div>
+                            <div class="posts__item-footer__comments-author">
+                                <a href="#">admin</a>
+                            </div>
                             <div class="posts__item-footer__comments-text">текст</div>
-                        </div>
-                        <div>
-                            <div class="posts__item-footer__comments-author">admin</div>
-                            <div class="posts__item-footer__comments-text">В CSS есть всего несколько техник центрирования элементов. Если их знать, то большинство задач решаются просто. </div>
                         </div>
                     </div>
                     <div class="posts__item-footer__comment-new">
@@ -114,6 +124,32 @@
             </div>
         </section>
     </main>
+    <footer>
+        <nav class="nav-footer">
+            <a href="#">
+                <div id="icon-notifications-mobile">
+                    <i class="far fa-bell icons"></i>
+                </div>
+            </a>
+            <a href="#">
+                <div id="icon-add-mobile">
+                    <i class="fas fa-plus icons"></i>
+                </div>
+            </a>
+            <!--
+            <a href="#">
+                <div id="icon-notifications-new">
+                <i class="fas fa-bell icons"></i>
+            </div>
+            </a>
+            -->
+            <a href="#">
+                <div class="nav__item-user" id="icon-user-mobile">
+                    <img src="images/photo.jpg">
+                </div>
+            </a>
+        </nav>
+    </footer>
     <script>
         const button = document.getElementById('button');
         const preloader = document.getElementById('preloader');
