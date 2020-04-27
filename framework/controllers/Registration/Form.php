@@ -10,6 +10,11 @@ class Form extends Controller
 
     protected function process()
     {
+        global $USER;
+
+        if ($USER->isAuthorized()) {
+            Application::redirect('/');
+        }
         Application::loadHeader(SITE_SHORT_TEMPLATE);
         Application::loadView(Form::VIEW);
         Application::loadFooter(SITE_SHORT_TEMPLATE);

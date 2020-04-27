@@ -28,12 +28,6 @@ use Framework\Modules\Router;
 /**
  * Авторизация
  */
-    /*Router::route(
-        'get',
-        '/auth/',
-        'Auth@Form',
-    );*/
-
     Router::route(
         'get',
         '/auth/',
@@ -76,6 +70,12 @@ use Framework\Modules\Router;
         ]
     );
 
+    Router::route(
+        'post',
+        '/reset/process/',
+        'Reset@FormPasswordProcessing'
+    );
+
 /**
  * Посты
  */
@@ -84,6 +84,12 @@ use Framework\Modules\Router;
         'get',
         '/',
         'Posts@GetList'
+    );
+
+    Router::route(
+        'get',
+        '/add/',
+        'Posts@AddPost'
     );
 
     Router::route(

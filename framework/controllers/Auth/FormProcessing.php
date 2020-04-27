@@ -10,15 +10,27 @@ class FormProcessing extends Controller
 
     protected function process()
     {
-        global $dbTables;
+        global $USER;
+
+        if ($USER->isAuthorized()) {
+            Application::redirect('/');
+        }
 
         Application::setAjaxResult(
-            Application::loadModel(
-                FormProcessing::MODEL,
-                [
-                    'TABLE' => $dbTables['USERS'],
-                ]
-            )
+            $this->getResult(FormProcessing::MODEL)
         );
+    }
+
+    private function getResult(string $model)
+    {
+        global $dbTables;
+
+        $result = Application::loadModel(
+            $model, [
+                'TABLE' => $dbTables['USERS'],
+            ]
+        );
+
+        return ($result);
     }
 }

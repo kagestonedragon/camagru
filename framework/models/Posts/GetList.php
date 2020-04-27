@@ -75,7 +75,6 @@ class GetList extends Model
                 false
             );
 
-        //Debugger::show($items);
         PostsHelper::generatePathToImages($items, GetList::IMAGE_DIRECTORY);
         return ($items);
     }

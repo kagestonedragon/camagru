@@ -4,13 +4,17 @@ namespace Framework\Controllers\Posts;
 use Framework\Controllers\Basic\Controller;
 use Framework\Modules\Application;
 use Framework\Helpers\Posts as PostsHelper;
+use Framework\Modules\Debugger;
 
 class GetList extends Controller
 {
     const POSTS_MODEL = 'Posts@GetList';
     const COMMENTARIES_MODEL = "Posts@GetCommentaries";
     const LIKES_MODEL = "Posts@GetLikes";
-    const VIEW = 'Posts^List';
+    const POSTS_VIEW = 'Posts^ListRedesign';
+
+    const USERS_MODEL = 'Users@GetList';
+    const USERS_VIEW = 'Posts^Users';
 
     protected function process()
     {
@@ -21,8 +25,22 @@ class GetList extends Controller
         }
 
         Application::loadHeader(SITE_DEFAULT_TEMPLATE);
-        Application::loadView(GetList::VIEW, $this->getFullPosts());
+        Application::loadView(GetList::POSTS_VIEW, $this->getFullPosts());
+        Application::loadView(GetList::USERS_VIEW, $this->getUsersList());
         Application::loadFooter(SITE_DEFAULT_TEMPLATE);
+    }
+
+    private function getUsersList()
+    {
+        global $dbTables;
+
+        $result = Application::loadModel(
+            GetList::USERS_MODEL, [
+                'TABLE_USERS' => $dbTables['USERS'],
+                'LIMIT' => 10,
+            ]
+        );
+        return ($result);
     }
 
     private function getFullPosts()

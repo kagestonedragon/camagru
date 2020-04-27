@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Modules\Reset;
+namespace Framework\Models\Reset;
 use Framework\Models\Basic\Model;
 use Framework\Modules\ORM;
 use Framework\Helpers\Registration as RegistrationHelper;
@@ -9,7 +9,8 @@ class PasswordProcessing extends Model
 {
     const PATTERNS = [
         'PASSWORD' => [
-            'LENGTH' => 32,
+            'MIN_LENGTH' => 8,
+            'MAX_LENGTH' => 32,
             'PATTERN' => '/[\s+]/',
         ],
     ];
@@ -38,6 +39,10 @@ class PasswordProcessing extends Model
         'ERROR_TOKEN' => [
             'CODE' => 505,
             'TEXT' => 'Неверный токен',
+        ],
+        'ERROR_PASSWORD_MIN_LENGTH' => [
+            'CODE' => 506,
+            'TEXT' => 'Короткий пароль',
         ],
         'SUCCESS' => [
             'CODE' => 200,
@@ -68,11 +73,13 @@ class PasswordProcessing extends Model
     {
         (new ORM('#users'))
             ->update([
-                'password' => RegistrationHelper::encryptPassword($password),
+                'password' => ':password',
             ])
             ->where('username=:username')
             ->execute([
-                '#users' => $this->params['TABLE_USERS']
+                '#users' => $this->params['TABLE_USERS'],
+                ':username' => $username,
+                ':password' => RegistrationHelper::encryptPassword($password),
             ]);
     }
 
@@ -88,7 +95,11 @@ class PasswordProcessing extends Model
 
     private function validatePassword(string $password)
     {
-        if (strlen($password) > PasswordProcessing::PATTERNS['PASSWORD']['LENGTH']) {
+
+        if (strlen($password) < PasswordProcessing::PATTERNS['PASSWORD']['MIN_LENGTH'])  {
+            $this->setStatus(PasswordProcessing::STATUS['ERROR_PASSWORD_MIN_LENGTH']);
+            return (false);
+        } else if (strlen($password) > PasswordProcessing::PATTERNS['PASSWORD']['MAX_LENGTH']) {
             $this->setStatus(PasswordProcessing::STATUS['ERROR_PASSWORD_LENGTH']);
             return (false);
         } else {

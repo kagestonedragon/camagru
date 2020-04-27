@@ -10,6 +10,12 @@ class FormEmailProcessing extends Controller
 
     protected function process()
     {
+        global $USER;
+
+        if ($USER->isAuthorized()) {
+            Application::redirect('/');
+        }
+
         Application::setAjaxResult(
             $this->getResult(FormEmailProcessing::MODEL)
         );

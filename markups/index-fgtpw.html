@@ -20,23 +20,33 @@
             <div class="form__item-title">
                 Camagru
             </div>
+            <div class="form__item-success" id="js-success-message" style="">
+                <div>
+                    Пароль успешно изменен.
+                </div>
+                <div style="margin-top: 10px;">
+                    Теперь вы можете <a href="/auth/"><span id="js-email-text" style="color: #0095F6; font-weight: 500;">Войти</span></a>.
+                </div>
+            </div>
             <form style="margin-top: 20px;">
-                <div  class="form__item-error" id="js-error" style="visibility: hidden;">Ошибка АХХХА</div>
-                <div class="form__item-elem">
-                    <input type="text" name="text" disabled value="username" id="username" placeholder=" ">
-                    <label class="form__item-elem__placeholder" for="username">Имя пользователя</label>
-                </div>
-                <div class="form__item-elem">
-                    <input type="password" name="text" value="" style="margin-top:45px;" id="password" placeholder=" ">
-                    <label class="form__item-elem__placeholder" style="margin-top: 45px" for="password">Новый пароль</label>
-                </div>
-                <div class="form__item-elem">
-                    <input type="password" name="text" value="" style="margin-top:90px;" id="password-confirm" placeholder=" ">
-                    <label class="form__item-elem__placeholder" style="margin-top: 90px" for="password-confirm">Подтвержение пароля</label>
-                </div>
-                <div class="form__item-elem">
-                    <div class="lds-dual-ring" style="display: none; position: absolute; margin-top: 145px; margin-left: 160px;" id="preloader"></div>
-                    <input class="form__item-elem__submit" id="js-submit" style="top: 145px;" type="submit" id="test" name="submit" value="Сбросить пароль">
+                <div style="display: none;">
+                    <div  class="form__item-error" id="js-error" style="visibility: hidden;">Ошибка АХХХА</div>
+                    <div class="form__item-elem">
+                        <input type="text" name="text" disabled value="username" id="username" placeholder=" ">
+                        <label class="form__item-elem__placeholder" for="username">Имя пользователя</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <input type="password" name="text" value="" style="margin-top:45px;" id="password" placeholder=" ">
+                        <label class="form__item-elem__placeholder" style="margin-top: 45px" for="password">Новый пароль</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <input type="password" name="text" value="" style="margin-top:90px;" id="password-confirm" placeholder=" ">
+                        <label class="form__item-elem__placeholder" style="margin-top: 90px" for="password-confirm">Подтвержение пароля</label>
+                    </div>
+                    <div class="form__item-elem">
+                        <div class="lds-dual-ring" style="display: none; position: absolute; margin-top: 145px; margin-left: 160px;" id="preloader"></div>
+                        <input class="form__item-elem__submit" id="js-submit" style="top: 145px;" type="submit" id="test" name="submit" value="Сбросить пароль">
+                    </div>
                 </div>
             </form>
         </div>

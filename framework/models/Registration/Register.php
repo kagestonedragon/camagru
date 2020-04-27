@@ -16,15 +16,16 @@ class Register extends Model
 
     const PATTERNS = [
         'EMAIL' => [
-            'LENGTH' => 32,
+            'MAX_LENGTH' => 32,
             'PATTERN' => '/^(\S+)@(\S+)\.(\S+)$/'
         ],
         'USERNAME' => [
-            'LENGTH' => 32,
+            'MAX_LENGTH' => 32,
             'PATTERN' => '/[a-zA-Z]|[0-9]|_/',
         ],
         'PASSWORD' => [
-            'LENGTH' => 32,
+            'MAX_LENGTH' => 32,
+            'MIN_LENGTH' => 8,
             'PATTERN' => '/[\s+]/',
         ],
     ];
@@ -66,6 +67,10 @@ class Register extends Model
             'CODE' => 508,
             'TEXT' => 'Неверный пароль',
         ],
+        'ERROR_PASSWORD_MIN_LENGTH' => [
+            'CODE' => 509,
+            'TEXT' => 'Короткий пароль',
+        ],
         'SUCCESS' => [
             'CODE' => 200,
             'TEXT' => 'На почту #EMAIL# отправлена ссылка для подтвеждения аккаунта!',
@@ -102,7 +107,7 @@ class Register extends Model
 
     private function validateUsername(string $username)
     {
-        if (strlen($username) > Register::PATTERNS['USERNAME']['LENGTH']) {
+        if (strlen($username) > Register::PATTERNS['USERNAME']['MAX_LENGTH']) {
             $this->setStatus(Register::STATUS['ERROR_USERNAME_LENGTH']);
             return (false);
         } else {
@@ -120,7 +125,7 @@ class Register extends Model
 
     private function validateEmail(string $email)
     {
-        if (strlen($email) > Register::PATTERNS['EMAIL']['LENGTH']) {
+        if (strlen($email) > Register::PATTERNS['EMAIL']['MAX_LENGTH']) {
             $this->setStatus(Register::STATUS['ERROR_EMAIL_LENGTH']);
             return (false);
         } else {
@@ -135,7 +140,10 @@ class Register extends Model
 
     private function validatePassword(string $password)
     {
-        if (strlen($password) > Register::PATTERNS['PASSWORD']['LENGTH']) {
+        if (strlen($password) < Register::PATTERNS['PASSWORD']['MIN_LENGTH']) {
+            $this->setStatus(Register::STATUS['ERROR_PASSWORD_MIN_LENGTH']);
+            return (false);
+        } else if (strlen($password) > Register::PATTERNS['PASSWORD']['MAX_LENGTH']) {
             $this->setStatus(Register::STATUS['ERROR_PASSWORD_LENGTH']);
             return (false);
         } else {
