@@ -31,14 +31,14 @@ $userLink = '/u/' . $USER->getUsername() . '/';
     </nav>
 </footer>
 <script>
-    const button = document.getElementById('button');
+    /*const button = document.getElementById('button');
     const preloader = document.getElementById('preloader');
 
     button.addEventListener('click', function(e) {
         e.preventDefault();
         button.style.display = 'none';
         preloader.style.display = 'block';
-    })
+    })*/
 </script>
 </body>
 </html>
